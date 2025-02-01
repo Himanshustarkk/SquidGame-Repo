@@ -8,8 +8,7 @@ public class Level_5_controller : MonoBehaviour
     public Camera cam;
     public LayerMask box_layer;
     public Level_5_Control_Dalgona control_dalgona_chosen;
-    [SerializeField] GameObject win_panel, lose_panel;
-    [SerializeField] GameObject Xwin_panel;
+    public GameObject win_panel, lose_panel;
 
     // Start is called before the first frame update
     void Start()
@@ -31,14 +30,11 @@ public class Level_5_controller : MonoBehaviour
 
     void choose_box()
     {
-        Debug.Log("CHOOSE BOS");
         Ray ray = cam.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;
-        Debug.Log("box_layer" + box_layer);
-        Debug.DrawRay(ray.origin, ray.direction * 1000000, Color.red);
+
         if (Physics.Raycast(ray, out hit, Mathf.Infinity, box_layer))
         {
-            Debug.Log("HIT : " + hit.collider.name);
             active = false;
             Level_5_boxControl box_script = hit.collider.GetComponent<Level_5_boxControl>();
 
@@ -49,11 +45,6 @@ public class Level_5_controller : MonoBehaviour
 
             box_script.move_cam_move_cover();
         }
-        else
-        {
-            Debug.Log("box_layer" + box_layer);
-            //Debug.Log("WRONG HIT : "+hit.collider.name);
-        }
     }
 
     public void start_game()
@@ -63,12 +54,12 @@ public class Level_5_controller : MonoBehaviour
 
     public void show_win_panel()
     {
-        Xwin_panel.SetActive(true);
+        win_panel.SetActive(true);
     }
 
     public void show_lose_panel()
     {
-        Xwin_panel.SetActive(true);
+        lose_panel.SetActive(true);
     }
 
 }

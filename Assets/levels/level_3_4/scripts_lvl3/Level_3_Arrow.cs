@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
 using UnityEngine.UI;
 
 public class Level_3_Arrow : MonoBehaviour
@@ -7,13 +9,13 @@ public class Level_3_Arrow : MonoBehaviour
     public float arrow_back_speed, arrow_forward_speed;
     public float max_dist_arrow, min_dist_arrow;
     public float dist_between_arrows;
-    public Transform Arrow_Min_pos;
+    public Transform pos_min_arrow;
     public Image filled_bg;
-    public RectTransform PowerZone;
+    public RectTransform target;
     public Color[] clrs;
     public RectTransform[] list_target_positions;
     public Image red_bg, white_bg;
-    public int Actual_pos;
+    public int actual_pos;
     public float timer, max_time , speed_target;
     public bool can_move;
     Level_3_Conroller control_script;
@@ -27,12 +29,10 @@ public class Level_3_Arrow : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        float Arrow_X_Pos = transform.localPosition.x;
-     //   Debug.Log(my_x_pos + "My X pos");
+        float my_x_pos = transform.localPosition.x;
+
         if (Input.GetMouseButtonDown(0))
         {
-            Debug.Log(transform.localPosition + "Before");
-
             float inc = arrow_forward_speed * Time.deltaTime;
 
             Vector3 tmp = transform.localPosition;
@@ -41,19 +41,11 @@ public class Level_3_Arrow : MonoBehaviour
             tmp.x = Mathf.Clamp(tmp.x, min_dist_arrow, max_dist_arrow);
 
             transform.localPosition = tmp;
-            Debug.Log(transform.localPosition+"After");
-
-           // Debug.Log(tmp);
-
-            //Debug.Log("Getting Input");
         }
         else
         {
-            Debug.Log(transform.localPosition + "iNSIDE eLESE");
             // decrease on x arrow
             decrease_on_x_arrow();
-           // Debug.Log("No  Mouse Input ");
-
         }
 
 
@@ -96,8 +88,8 @@ public class Level_3_Arrow : MonoBehaviour
 
     public void filled_bar()
     {
-        Vector2 posA = Arrow_Min_pos.GetComponent<RectTransform>().localPosition; // Storing the Position of Initial bar 
-        Vector2 posB = GetComponent<RectTransform>().localPosition; // Get the Moving Arrow position
+        Vector2 posA = pos_min_arrow.GetComponent<RectTransform>().localPosition;
+        Vector2 posB = GetComponent<RectTransform>().localPosition;
         float distance = Vector2.Distance(posA, posB);
 
         float percent = distance / 500;
@@ -108,21 +100,16 @@ public class Level_3_Arrow : MonoBehaviour
 
     public void check_between_arrows()
     {
-        Vector2 Powerzone_position = PowerZone.GetComponent<RectTransform>().localPosition;
-        Vector2 MovingArrow_pos = GetComponent<RectTransform>().localPosition;
-        Debug.Log("PowerZone Positions" + Powerzone_position);
-        Debug.Log("MovingArrow Positions" + MovingArrow_pos);
+        Vector2 target_vr = target.GetComponent<RectTransform>().localPosition;
+        Vector2 my_pos = GetComponent<RectTransform>().localPosition;
 
-        if (MovingArrow_pos.x >= (Powerzone_position.x - dist_between_arrows) && MovingArrow_pos.x <= (Powerzone_position.x + dist_between_arrows))
+        if(my_pos.x >= (target_vr.x - dist_between_arrows) && my_pos.x <= (target_vr.x + dist_between_arrows))
         {
             red_bg.gameObject.SetActive(false);
             white_bg.gameObject.SetActive(true);
 
             filled_bg.color = clrs[1];
             control_script.can_pull = true;
-            //Debug.Log("******If");
-            Debug.Log(control_script.can_pull+"CanPull"); 
-
         }
         else
         {
@@ -131,24 +118,22 @@ public class Level_3_Arrow : MonoBehaviour
 
             filled_bg.color = clrs[0];
             control_script.can_pull = false;
-            //Debug.Log("********Else");
         }
-
     }
 
     public void change_target_position()
     {
-        Vector2 target_vr = list_target_positions[Actual_pos].GetComponent<RectTransform>().localPosition;
-        Vector2 my_pos = PowerZone.GetComponent<RectTransform>().localPosition;
+        Vector2 target_vr = list_target_positions[actual_pos].GetComponent<RectTransform>().localPosition;
+        Vector2 my_pos = target.GetComponent<RectTransform>().localPosition;
 
         if (timer >= max_time)
         {
             can_move = true;
             timer = 0f;
-            Actual_pos++;
-            if(Actual_pos >= list_target_positions.Length - 1)
+            actual_pos++;
+            if(actual_pos >= list_target_positions.Length - 1)
             {
-                Actual_pos = 0;
+                actual_pos = 0;
             }
         }
         else
@@ -158,12 +143,12 @@ public class Level_3_Arrow : MonoBehaviour
             if(Vector2.Distance(target_vr, my_pos) <= .02f && can_move)
             {
                 can_move = false;
-                PowerZone.GetComponent<RectTransform>().localPosition = target_vr;
+                target.GetComponent<RectTransform>().localPosition = target_vr;
             }
             else if(can_move)
             {
                 my_pos = Vector2.MoveTowards(my_pos, target_vr, speed_target * Time.deltaTime);
-                PowerZone.GetComponent<RectTransform>().localPosition = my_pos;
+                target.GetComponent<RectTransform>().localPosition = my_pos;
             }
         }
     }

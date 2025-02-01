@@ -6,8 +6,6 @@ using MoreMountains.NiceVibrations;
 
 public class Level_5_Control_Dalgona : MonoBehaviour
 {
-    public GameObject WinPanel;
-    public GameObject LoosePanel;
     public DOTweenPath dot_path;
     public Animator anim;
     public Transform[] list_dalgona_part_pos;
@@ -205,7 +203,6 @@ public class Level_5_Control_Dalgona : MonoBehaviour
         yield return new WaitForSeconds(3f);
         //show lose panel
       //  Advertisements.Instance.ShowInterstitial();
-      //WinPanel.SetActive(true);
         Level_5_controller controller_script = FindObjectOfType<Level_5_controller>();
         controller_script.show_win_panel();
     }
