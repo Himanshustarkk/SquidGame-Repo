@@ -11261,9 +11261,9 @@ MonoBehaviour:
   cam_pos_finish: {fileID: 1651795407}
   ease: 1
   Level_4_start_panel: {fileID: 1101360080}
-  win_panel: {fileID: 65826762}
+  win_panel: {fileID: 0}
   InGame_Panel: {fileID: 1960969538}
-  lose_panel: {fileID: 1865426941}
+  lose_panel: {fileID: 0}
   confetti: {fileID: 5900859311748821633}
 --- !u!54 &2852692374724552044
 Rigidbody:
