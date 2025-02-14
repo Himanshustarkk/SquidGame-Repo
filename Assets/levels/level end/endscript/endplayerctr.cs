@@ -1,5 +1,4 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -199,19 +198,42 @@ public class endplayerctr : MonoBehaviour
 
     IEnumerator winplayer()
     {
+        //=========================================================================================================================================================== for Update GameScore and GG Coins
+
+        GrandAdManager.isWinOrLoseLevel = "win";
+        GrandAdManager.TotalGGCoinsEarned += 1;
+        GrandAdManager.TotalScore += 100;
+
+        APIManager.Instance.UpdateGameScore(GrandAdManager.TotalScore, GrandAdManager.isWinOrLoseLevel, gamemanager.instance.getLevel() + 1, GrandAdManager.TotalGGCoinsEarned);
+
+        //=========================================================================================================================================================== 
+
+
         FindObjectOfType<UiManager>().wineffet.SetActive(true);
         GetComponent<Animator>().Play("win");
         GetComponent<Animator>().speed = 1;
         SoundManager.instance.Play("win");
         yield return new WaitForSeconds(7f);
-        Gley.MobileAds.Internal.MobileAdsExample.Instance.ShowInterstitial();
+     //   Gley.MobileAds.Internal.MobileAdsExample.Instance.ShowInterstitial();
         FindObjectOfType<UiManager>().winpanel.SetActive(true);
+
+
+
 
     }
 
 
     IEnumerator dieplayer()
     {
+
+        //=========================================================================================================================================================== for Update GameScore and GG Coins
+
+        GrandAdManager.isWinOrLoseLevel = "loss";
+        APIManager.Instance.UpdateGameScore(GrandAdManager.TotalScore, GrandAdManager.isWinOrLoseLevel, gamemanager.instance.getLevel() + 1, GrandAdManager.TotalGGCoinsEarned);
+
+        //============================================================================================================================================================ 
+
+
         //FindObjectOfType<UiManager>().wineffet.SetActive(true);
         GetComponent<Animator>().Play("die1");
         GetComponent<Animator>().speed = 1;

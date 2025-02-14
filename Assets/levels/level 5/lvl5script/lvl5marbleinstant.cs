@@ -18,6 +18,7 @@ public class lvl5marbleinstant : MonoBehaviour
             i++;
             insmarble = true;
             Instantiate(mrbl, transform.position,Quaternion.identity);
+
         }
     }
 
@@ -30,12 +31,14 @@ public class lvl5marbleinstant : MonoBehaviour
             i++;
             insmarble = true;
             Instantiate(mrbl, transform.position, Quaternion.identity);
+            Debug.Log("Inside the !isMarble && thee value of i     "+"  "+i);
         }
-
-        if(lose && !onetime)
+        Debug.Log("Outside the !isMarble && thee value of i     " + "  " + i);
+        if (lose && !onetime)
         {
             onetime = true;
             StartCoroutine(dieplayer());
+            
         }
 
         if(FindObjectOfType<UiManager>().t<=0 && !win)
@@ -46,11 +49,17 @@ public class lvl5marbleinstant : MonoBehaviour
 
     IEnumerator dieplayer()
     {
+        //=========================================================================================================================================================== for Update GameScore and GG Coins
+
+        GrandAdManager.isWinOrLoseLevel = "loss";
+        APIManager.Instance.UpdateGameScore(GrandAdManager.TotalScore, GrandAdManager.isWinOrLoseLevel, gamemanager.instance.getLevel() + 1, GrandAdManager.TotalGGCoinsEarned);
+
+        //============================================================================================================================================================ 
+
+
         FindObjectOfType<UiManager>().startcount = false;
         SoundManager.instance.Play("lose");
-        yield return new WaitForSeconds(5f);
-        //AdManager.Instance.ShowVideo();
-       // Gley.MobileAds.Internal.MobileAdsExample.Instance.ShowRewardedVideo();
+        yield return new WaitForSeconds(3f);
         FindObjectOfType<UiManager>().losepanel.SetActive(true);
     }
 }

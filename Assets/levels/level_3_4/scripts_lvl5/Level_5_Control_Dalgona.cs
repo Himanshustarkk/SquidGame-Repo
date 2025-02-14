@@ -146,6 +146,17 @@ public class Level_5_Control_Dalgona : MonoBehaviour
 
     IEnumerator show_lose()
     {
+
+        //=========================================================================================================================================================== for Update GameScore and GG Coins
+
+        GrandAdManager.isWinOrLoseLevel = "loss";
+        APIManager.Instance.UpdateGameScore(GrandAdManager.TotalScore, GrandAdManager.isWinOrLoseLevel, gamemanager.instance.getLevel() + 1, GrandAdManager.TotalGGCoinsEarned);
+
+        //============================================================================================================================================================ 
+
+
+
+
         print("you lose");
 
         timer_script = FindObjectOfType<Level_5_timer>();
@@ -192,6 +203,19 @@ public class Level_5_Control_Dalgona : MonoBehaviour
 
     IEnumerator show_win()
     {
+        //=========================================================================================================================================================== for Update GameScore and GG Coins
+        Debug.Log("GG Coins BEfooe"+ GrandAdManager.TotalGGCoinsEarned);
+        GrandAdManager.isWinOrLoseLevel = "win";
+        GrandAdManager.TotalGGCoinsEarned += 1;
+        GrandAdManager.TotalScore += 100;
+
+        APIManager.Instance.UpdateGameScore(GrandAdManager.TotalScore, GrandAdManager.isWinOrLoseLevel, gamemanager.instance.getLevel() + 1, GrandAdManager.TotalGGCoinsEarned);
+
+        Debug.Log("Total GGCoins Earned"+ GrandAdManager.TotalGGCoinsEarned);
+        //=========================================================================================================================================================== 
+
+
+
         print("you won");
         timer_script = FindObjectOfType<Level_5_timer>();
         timer_script.active = false;

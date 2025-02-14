@@ -35,6 +35,7 @@ public class Level_5_controller : MonoBehaviour
 
         if (Physics.Raycast(ray, out hit, Mathf.Infinity, box_layer))
         {
+            Debug.Log("Hit with "+hit.collider.name+"this is layer name "+box_layer);
             active = false;
             Level_5_boxControl box_script = hit.collider.GetComponent<Level_5_boxControl>();
 
@@ -55,6 +56,7 @@ public class Level_5_controller : MonoBehaviour
     public void show_win_panel()
     {
         win_panel.SetActive(true);
+       
     }
 
     public void show_lose_panel()

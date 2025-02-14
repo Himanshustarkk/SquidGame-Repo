@@ -11,6 +11,13 @@ public class startmygame : MonoBehaviour
 
     void Start()
     {
+        if (PlayerPrefs.HasKey("firsttime"))
+        {
+            PlayerPrefs.DeleteKey("firsttime");
+            PlayerPrefs.SetInt("level", 0);
+        }
+        GrandAdManager.TotalGGCoinsEarned = 0;
+        GrandAdManager.score = 0;
         StartCoroutine(LoadGameScene());
     }
 

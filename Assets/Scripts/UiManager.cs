@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using DG.Tweening.Core.Easing;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -7,12 +8,12 @@ using UnityEngine.UI;
 public class UiManager : MonoBehaviour
 {
     public static UiManager instance;
-    public Text LevelText,secondmessage;
+    public Text LevelText, secondmessage;
     public bool skinEnter;
     public GameObject red, green;
     public GameObject ingamepanel;
     public GameObject playerSelectionPanel;
-    public GameObject startpanel,gameplaypanel,losepanel,winpanel;
+    public GameObject startpanel, gameplaypanel, losepanel, winpanel;
     public GameObject wineffet;
     public Text timershow;
     public float t = 65;
@@ -20,6 +21,9 @@ public class UiManager : MonoBehaviour
     public GameObject bloodeefect;
     float ts = 1;
     public TextMeshProUGUI txtpr;
+
+
+
 
     public Color clr;
 
@@ -34,33 +38,33 @@ public class UiManager : MonoBehaviour
 
         //SoundManager.instance.Play("start");
         // Advertisements.Instance.Initialize();
-      // Gley.MobileAds.Internal.MobileAdsExample.Instance.ShawBanner();
+        // Gley.MobileAds.Internal.MobileAdsExample.Instance.ShawBanner();
         //LevelText.text = "Level " + (gamemanager.instance.getLevel() + 1);
     }
 
     private void Update()
     {
-        if(startcount)
+        if (startcount)
         {
             t -= Time.deltaTime;
             ts -= Time.deltaTime;
-            if(ts<=0 && t>=0)
+            if (ts <= 0 && t >= 0)
             {
                 ts = 1;
                 SoundManager.instance.Play("click");
             }
             int a = (int)t;
             //StartCoroutine(timeconting());`
-            if(a>=0)
+            if (a >= 0)
             {
                 timershow.text = a.ToString();
-             /*   if(gamemanager.instance.getLevel()<1)
-                {
-                    txtpr.text = a.ToString();
-                }*/
-                
+                /*   if(gamemanager.instance.getLevel()<1)
+                   {
+                       txtpr.text = a.ToString();
+                   }*/
+
             }
-            
+
         }
     }
 
@@ -76,8 +80,8 @@ public class UiManager : MonoBehaviour
     public void btn_retry()
     {
         print(gamemanager.instance.getlive());
-        gamemanager.instance.setlive(gamemanager.instance.getlive()+1);
-        if(gamemanager.instance.getlive()>2)
+        gamemanager.instance.setlive(gamemanager.instance.getlive() + 1);
+        if (gamemanager.instance.getlive() > 2)
         {
             gamemanager.instance.setLevel(0);
             gamemanager.instance.setlive(0);
@@ -96,16 +100,22 @@ public class UiManager : MonoBehaviour
 
     public void nextlvl()
     {
-        
+        GrandAdManager.instance.ShowAd("startAd");
+
+        Debug.Log("This is Current Level " + gamemanager.instance.getLevel()); 
         SoundManager.instance.stop("click");
-        gamemanager.instance.setLevel(gamemanager.instance.getLevel() + 1);
-        if (gamemanager.instance.getLevel()+1>7)
+
+        int nextLevel = gamemanager.instance.getLevel() + 1;
+
+        if (nextLevel > 7)
         {
-            gamemanager.instance.setLevel(0);
+            nextLevel = 0; // Reset if exceeding max level
         }
 
-        Debug.Log(gamemanager.instance.getLevel());
-        SceneManager.LoadScene(gamemanager.instance.getLevel() + 1);
+        gamemanager.instance.setLevel(nextLevel);
+        PlayerPrefs.Save(); // Ensure PlayerPrefs is updated before loading the new scene
+
+        SceneManager.LoadScene(nextLevel + 1);
     }
 
     public void btnstart()
@@ -142,11 +152,11 @@ public class UiManager : MonoBehaviour
 
     IEnumerator timeconting()
     {
-        while (t>=0)
+        while (t >= 0)
         {
             yield return new WaitForSeconds(1f);
             SoundManager.instance.Play("click");
         }
-        
+
     }
 }

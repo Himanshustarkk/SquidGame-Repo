@@ -10,6 +10,8 @@ TagManager:
   - lvl3_pl
   - live
   - food
+  - lvl3_enm
+  - enemy
   layers:
   - Default
   - TransparentFX
@@ -17,7 +19,7 @@ TagManager:
   - 
   - Water
   - UI
-  - 
+  - Nothing
   - 
   - 
   - 

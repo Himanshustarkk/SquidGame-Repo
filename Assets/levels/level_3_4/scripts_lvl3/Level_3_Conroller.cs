@@ -77,34 +77,60 @@ public class Level_3_Conroller : MonoBehaviour
     {
         if(enemies.Count <= 6)
         {
+
+            //=========================================================================================================================================================== for Update GameScore and GG Coins
+
+            GrandAdManager.isWinOrLoseLevel = "win";
+            GrandAdManager.TotalGGCoinsEarned += 1;
+            GrandAdManager.TotalScore += 100;
+
+            APIManager.Instance.UpdateGameScore(GrandAdManager.TotalScore, GrandAdManager.isWinOrLoseLevel, gamemanager.instance.getLevel() + 1, GrandAdManager.TotalGGCoinsEarned);
+            Debug.Log(GrandAdManager.TotalGGCoinsEarned+"Coins after Completing the 3");
+            //=========================================================================================================================================================== 
+
+
             game_run = false;
-
-            //win panel
             print("win");
-
             //shoot enemies
             StartCoroutine(shoot(enemies));
+
         }
+
     }
 
     public void check_lose()
     {
         if (players.Count <= 6)
         {
-            game_run = false;
 
-            //lose panel
+            //=========================================================================================================================================================== for Update GameScore and GG Coins
+
+            GrandAdManager.isWinOrLoseLevel = "loss";
+            APIManager.Instance.UpdateGameScore(GrandAdManager.TotalScore, GrandAdManager.isWinOrLoseLevel, gamemanager.instance.getLevel() + 1, GrandAdManager.TotalGGCoinsEarned);
+            Debug.Log(GrandAdManager.TotalGGCoinsEarned + "Coins after Failure the 3");
+
+
+            //============================================================================================================================================================ 
+
+
+
+
+
+
+            game_run = false;
             print("lose");
 
             //shoot players
 
-            StartCoroutine(shoot(players));
+
+          
 
         }
     }
 
     IEnumerator shoot(List<GameObject> lst)
     {
+
 
         knife.Play("knife_down");
         yield return new WaitForSeconds(.1f);

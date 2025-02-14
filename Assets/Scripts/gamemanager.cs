@@ -9,9 +9,9 @@ public class gamemanager : MonoBehaviour
 {
     public static gamemanager instance;
 
-    public GameObject startpanel, gamePlaypanel, winpanel, losepanel,messagepanel,win,lose;
+    public GameObject startpanel, gamePlaypanel, winpanel, losepanel, messagepanel, win, lose;
 
-    public GameObject effect1, effect2,enemydieEffect,obstacleEffect,wineffect;
+    public GameObject effect1, effect2, enemydieEffect, obstacleEffect, wineffect;
 
     public Text playerCounterGameplay, plauerCounterWin, newbestTxt, goalsizetxt;
 
@@ -77,8 +77,14 @@ public class gamemanager : MonoBehaviour
 
     public void onstartfirsttime()
     {
+
+        
         if (!PlayerPrefs.HasKey("firsttime"))
         {
+
+            // This Conditions Runs for First Time Only
+            Debug.Log("frist Time called");
+
             PlayerPrefs.SetInt("count", 1);
             PlayerPrefs.SetInt("coin", 0);
             PlayerPrefs.SetInt("level", 0);
@@ -93,7 +99,11 @@ public class gamemanager : MonoBehaviour
                 PlayerPrefs.SetInt("skin" + i, 0);
             }
         }
+
+
+
     }
+
 
     // count Active skin
     public int getcountActive()
@@ -180,6 +190,7 @@ public class gamemanager : MonoBehaviour
     public int getLevel()
     {
         return PlayerPrefs.GetInt("level");
+
     }
 
 
@@ -225,9 +236,12 @@ public class gamemanager : MonoBehaviour
     public void instantiateLevel()
     {
         if (LevelsContenu.Length > getLevel())
-          //  Instantiate(LevelsContenu[getLevel()]);
+        {
+            //  Instantiate(LevelsContenu[getLevel()]);
             LevelsContenu[getLevel()].SetActive(true);
-
+            Debug.Log("Instantiat Level");
+        }
+            
 
     }
 

@@ -823,7 +823,7 @@ PlayerSettings:
   webGLTemplate: APPLICATION:Default
   webGLAnalyzeBuildSize: 0
   webGLUseEmbeddedResources: 0
-  webGLCompressionFormat: 1
+  webGLCompressionFormat: 2
   webGLWasmArithmeticExceptions: 0
   webGLLinkerTarget: 1
   webGLThreadsSupport: 0
@@ -836,10 +836,11 @@ PlayerSettings:
   webGLMemoryGeometricGrowthCap: 96
   webGLPowerPreference: 2
   scriptingDefineSymbols:
-    Android: USE_UNITYADS;MOREMOUNTAINS_NICEVIBRATIONS;USE_ADMOB_PATCH;USE_ADMOB;USE_ADMOB_PATCH;GLEY_ADMOB;GLEY_PATCH_ADMOB
+    Android: USE_UNITYADS;MOREMOUNTAINS_NICEVIBRATIONS;USE_ADMOB_PATCH;USE_ADMOB;GLEY_ADMOB;GLEY_PATCH_ADMOB;gameanalytics_admob_enabled
     Standalone: MOREMOUNTAINS_NICEVIBRATIONS
+    WebGL: MOREMOUNTAINS_NICEVIBRATIONS
     Windows Store Apps: 
-    iPhone: USE_ADMOB_PATCH
+    iPhone: USE_ADMOB_PATCH;gameanalytics_admob_enabled
   additionalCompilerArguments: {}
   platformArchitecture: {}
   scriptingBackend:

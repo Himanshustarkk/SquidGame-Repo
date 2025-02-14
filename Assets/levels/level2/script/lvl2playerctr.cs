@@ -140,7 +140,9 @@ public class lvl2playerctr : MonoBehaviour
 				if (move)
 					Move();
 				else
-					thisRigidbody.velocity = Vector3.zero;
+					thisRigidbody.velocity = Vector2.zero;
+
+
 			}
 		}
 	}
@@ -204,19 +206,42 @@ public class lvl2playerctr : MonoBehaviour
 	IEnumerator winplayer()
 	{
 
-		transform.eulerAngles = new Vector3(0, 180, 0);
+        //=========================================================================================================================================================== for Update GameScore and GG Coins
+
+        GrandAdManager.isWinOrLoseLevel = "win";
+        GrandAdManager.TotalGGCoinsEarned += 1;
+		GrandAdManager.TotalScore += 100;
+        APIManager.Instance.UpdateGameScore(GrandAdManager.TotalScore, GrandAdManager.isWinOrLoseLevel, gamemanager.instance.getLevel() + 1, GrandAdManager.TotalGGCoinsEarned);
+
+        //=========================================================================================================================================================== for Update GameSc
+
+        transform.eulerAngles = new Vector3(0, 180, 0);
 		FindObjectOfType<UiManager>().wineffet.SetActive(true);
 		GetComponent<Animator>().Play("win");
 		GetComponent<Animator>().speed = 1;
 		SoundManager.instance.Play("win");
-		yield return new WaitForSeconds(3f);
-		//Gley.MobileAds.Internal.MobileAdsExample.Instance.ShowInterstitial();
+		yield return new WaitForSeconds(5f);
+	///	Gley.MobileAds.Internal.MobileAdsExample.Instance.ShowInterstitial();
 		FindObjectOfType<UiManager>().winpanel.SetActive(true);
+		Debug.Log("Getting Levels Details" + gamemanager.instance.getLevel());
+	
 
 	}
 
 	IEnumerator dieplayer()
 	{
+
+
+
+		//=========================================================================================================================================================== for Update GameScore and GG Coins
+
+		GrandAdManager.isWinOrLoseLevel = "loss";
+		APIManager.Instance.UpdateGameScore(GrandAdManager.TotalScore, GrandAdManager.isWinOrLoseLevel, gamemanager.instance.getLevel() + 1, GrandAdManager.TotalGGCoinsEarned);
+
+		//============================================================================================================================================================ 
+
+
+
 
 		win = true;
 		GameObject gm = Instantiate(FindObjectOfType<UiManager>().bloodeefect, transform);
