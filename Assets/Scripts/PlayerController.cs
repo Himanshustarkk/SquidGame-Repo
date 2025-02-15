@@ -196,6 +196,7 @@ public class PlayerController : MonoBehaviour
         GrandAdManager.TotalScore += 100;
         Debug.Log("Total Score value which is send " + GrandAdManager.TotalScore);
         APIManager.Instance.UpdateGameScore(GrandAdManager.TotalScore, GrandAdManager.isWinOrLoseLevel, gamemanager.instance.getLevel() + 1, GrandAdManager.TotalGGCoinsEarned);
+        UiManager.instance.TotalScoreUI();
 
         //=========================================================================================================================================================== for Update GameScore and GG Coins
 

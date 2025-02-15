@@ -208,14 +208,58 @@ public class endplayerctr : MonoBehaviour
 
         //=========================================================================================================================================================== 
 
+        UiManager uiManager = FindObjectOfType<UiManager>();
+        if (uiManager == null)
+        {
+            Debug.LogError("UiManager not found in the scene! Make sure it's added.");
+            yield break;  // Exit coroutine to prevent errors
+        }
 
-        FindObjectOfType<UiManager>().wineffet.SetActive(true);
-        GetComponent<Animator>().Play("win");
-        GetComponent<Animator>().speed = 1;
-        SoundManager.instance.Play("win");
-        yield return new WaitForSeconds(7f);
-     //   Gley.MobileAds.Internal.MobileAdsExample.Instance.ShowInterstitial();
-        FindObjectOfType<UiManager>().winpanel.SetActive(true);
+        if (uiManager.wineffet == null)
+        {
+            Debug.LogError("wineffet is NULL! Assign it in the Inspector.");
+        }
+        else
+        {
+            uiManager.wineffet.SetActive(true);
+        }
+
+        Animator anim = GetComponent<Animator>();
+        if (anim == null)
+        {
+            Debug.LogError("Animator component missing on this GameObject!");
+            yield break;
+        }
+
+        anim.Play("win");
+        anim.speed = 1;
+
+        if (SoundManager.instance == null)
+        {
+            Debug.LogError("SoundManager instance is NULL! Make sure it's in the scene.");
+        }
+        else
+        {
+            //SoundManager.instance.Play("win");
+        }
+
+        Debug.Log("Before Active Function");
+
+        if (uiManager.winpanel == null)
+        {
+            Debug.LogError("winpanel is NULL! Assign it in the Inspector.");
+        }
+        else
+        {
+            uiManager.winpanel.SetActive(true);
+        }
+
+        Debug.Log("After Active Function");
+        yield return new WaitForSeconds(2f);
+        Debug.Log("After Coroutine Execution");
+
+        //   Gley.MobileAds.Internal.MobileAdsExample.Instance.ShowInterstitial();
+
 
 
 

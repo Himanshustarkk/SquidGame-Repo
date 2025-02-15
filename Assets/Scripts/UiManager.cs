@@ -21,6 +21,7 @@ public class UiManager : MonoBehaviour
     public GameObject bloodeefect;
     float ts = 1;
     public TextMeshProUGUI txtpr;
+    [SerializeField] GameObject ScoreUI_Count;
 
 
 
@@ -36,7 +37,7 @@ public class UiManager : MonoBehaviour
     void Start()
     {
 
-        //SoundManager.instance.Play("start");
+        SoundManager.instance.Play("start");
         // Advertisements.Instance.Initialize();
         // Gley.MobileAds.Internal.MobileAdsExample.Instance.ShawBanner();
         //LevelText.text = "Level " + (gamemanager.instance.getLevel() + 1);
@@ -51,7 +52,7 @@ public class UiManager : MonoBehaviour
             if (ts <= 0 && t >= 0)
             {
                 ts = 1;
-                SoundManager.instance.Play("click");
+               /// SoundManager.instance.Play("click");
             }
             int a = (int)t;
             //StartCoroutine(timeconting());`
@@ -91,7 +92,7 @@ public class UiManager : MonoBehaviour
         {
             SceneManager.LoadScene(gamemanager.instance.getLevel() + 1);
         }
-        SoundManager.instance.stop("click");
+        SoundManager.instance.Stop("click");
         // sound
         //SoundManager.instance.Play("click");
         //gamemanager.instance.setLevel(gamemanager.instance.getLevel()-1);
@@ -100,10 +101,10 @@ public class UiManager : MonoBehaviour
 
     public void nextlvl()
     {
-        GrandAdManager.instance.ShowAd("startAd");
+        //GrandAdManager.instance.ShowAd("startAd");
 
         Debug.Log("This is Current Level " + gamemanager.instance.getLevel()); 
-        SoundManager.instance.stop("click");
+        SoundManager.instance.Stop("click");
 
         int nextLevel = gamemanager.instance.getLevel() + 1;
 
@@ -132,7 +133,7 @@ public class UiManager : MonoBehaviour
     public void btnstart2()
     {
 
-        SoundManager.instance.stop("start");
+        SoundManager.instance.Stop("start");
         SoundManager.instance.Play("click");
         FindObjectOfType<lvl2playerctr>().GmRun = true;
         startpanel.SetActive(false);
@@ -143,8 +144,8 @@ public class UiManager : MonoBehaviour
     public void btnstartlvl5()
     {
 
-        SoundManager.instance.stop("start");
-        SoundManager.instance.Play("click");
+      /*  SoundManager.instance.Stop("start");
+        SoundManager.instance.Play("click");*/
         startpanel.SetActive(false);
         gameplaypanel.SetActive(true);
         startcount = true;
@@ -158,5 +159,9 @@ public class UiManager : MonoBehaviour
             SoundManager.instance.Play("click");
         }
 
+    }
+    public void TotalScoreUI()
+    {
+        ScoreUI_Count.GetComponent<TextMeshProUGUI>().text=GrandAdManager.TotalScore.ToString();
     }
 }

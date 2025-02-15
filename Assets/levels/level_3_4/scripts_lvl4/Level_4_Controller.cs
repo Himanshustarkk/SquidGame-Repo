@@ -84,6 +84,7 @@ public class Level_4_Controller : MonoBehaviour
         for (int i = 0; i < list_glasses.Length; i += 2)
         {
             int rdm = Random.Range(0, 2);
+            rdm = 0;
             if (rdm == 0)
             {
                 list_glasses[i].type = glass_type.true_glass;
@@ -228,7 +229,7 @@ public class Level_4_Controller : MonoBehaviour
             Level_4_Glass glass = hit.collider.GetComponent<Level_4_Glass>();
             if (glass != null)
             {
-                Debug.Log("Getting Into IF  ");
+                Debug.Log("Inside Normal Glass");
 
                 if (glass.is_active)
                 {
@@ -259,19 +260,23 @@ public class Level_4_Controller : MonoBehaviour
         }
         else if (Physics.Raycast(ray, out hit, Mathf.Infinity, finish_layer))
         {
+            Debug.Log("Inside Else if , the final Glass");
             Debug.DrawRay(ray.origin, ray.direction * 100, Color.red, 5f);
 
             Debug.Log("Getting Into else if " + hit.collider.gameObject.name);
             // get pos
             Vector3 my_pos = hit.collider.transform.GetChild(0).position;
 
+
             finish_pos.SetActive(false);
             //jump
             transform.DOJump(my_pos, power_jump, 1, duration).OnComplete(() => on_final());
-
+            Debug.Log("Calling OnFinal");
 
 
         }
+        Debug.Log("Else if Executed , the final Glass");
+
     }
 
     public void jumping(Vector3 vec, bool bl = false, Level_4_Glass glass_sc = null)
@@ -339,6 +344,7 @@ public class Level_4_Controller : MonoBehaviour
     public void on_final()
     {
         //=========================================================================================================================================================== for Update GameScore and GG Coins
+        Debug.Log("Before API Done");
 
         GrandAdManager.isWinOrLoseLevel = "win";
         GrandAdManager.TotalGGCoinsEarned += 1;
@@ -346,10 +352,11 @@ public class Level_4_Controller : MonoBehaviour
         APIManager.Instance.UpdateGameScore(GrandAdManager.TotalScore, GrandAdManager.isWinOrLoseLevel, gamemanager.instance.getLevel() + 1, GrandAdManager.TotalGGCoinsEarned);
 
         //=========================================================================================================================================================== 
-
+        Debug.Log("API Done");
 
         //play confetti
         confetti.Play();
+        Debug.Log("API Done");
 
         game_run = false;
 

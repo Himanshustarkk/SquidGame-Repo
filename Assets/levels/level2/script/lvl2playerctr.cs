@@ -212,6 +212,8 @@ public class lvl2playerctr : MonoBehaviour
         GrandAdManager.TotalGGCoinsEarned += 1;
 		GrandAdManager.TotalScore += 100;
         APIManager.Instance.UpdateGameScore(GrandAdManager.TotalScore, GrandAdManager.isWinOrLoseLevel, gamemanager.instance.getLevel() + 1, GrandAdManager.TotalGGCoinsEarned);
+        UiManager.instance.TotalScoreUI();
+
 
         //=========================================================================================================================================================== for Update GameSc
 
@@ -221,7 +223,6 @@ public class lvl2playerctr : MonoBehaviour
 		GetComponent<Animator>().speed = 1;
 		SoundManager.instance.Play("win");
 		yield return new WaitForSeconds(5f);
-	///	Gley.MobileAds.Internal.MobileAdsExample.Instance.ShowInterstitial();
 		FindObjectOfType<UiManager>().winpanel.SetActive(true);
 		Debug.Log("Getting Levels Details" + gamemanager.instance.getLevel());
 	
