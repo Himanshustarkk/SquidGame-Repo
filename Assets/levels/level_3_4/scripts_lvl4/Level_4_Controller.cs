@@ -84,7 +84,6 @@ public class Level_4_Controller : MonoBehaviour
         for (int i = 0; i < list_glasses.Length; i += 2)
         {
             int rdm = Random.Range(0, 2);
-            rdm = 0;
             if (rdm == 0)
             {
                 list_glasses[i].type = glass_type.true_glass;
