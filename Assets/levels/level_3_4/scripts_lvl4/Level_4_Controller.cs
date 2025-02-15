@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
+using GameAnalyticsSDK;
 //using MoreMountains.NiceVibrations;
 
 public class Level_4_Controller : MonoBehaviour
@@ -37,6 +38,8 @@ public class Level_4_Controller : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        GameAnalytics.NewProgressionEvent(GAProgressionStatus.Start, "Level" + gamemanager.instance.getLevel() + 1);
+
         cam_follow = FindObjectOfType<Level_4_cam>();
 
         rb = GetComponent<Rigidbody>();
@@ -302,6 +305,7 @@ public class Level_4_Controller : MonoBehaviour
 
         GrandAdManager.isWinOrLoseLevel = "loss";
         APIManager.Instance.UpdateGameScore(GrandAdManager.TotalScore, GrandAdManager.isWinOrLoseLevel, gamemanager.instance.getLevel() + 1, GrandAdManager.TotalGGCoinsEarned);
+        GameAnalytics.NewProgressionEvent(GAProgressionStatus.Fail, "Level" + gamemanager.instance.getLevel() + 1, "Points", GrandAdManager.TotalScore);
 
         //============================================================================================================================================================ 
 
@@ -349,6 +353,7 @@ public class Level_4_Controller : MonoBehaviour
         GrandAdManager.TotalGGCoinsEarned += 1;
         GrandAdManager.TotalScore += 100;
         APIManager.Instance.UpdateGameScore(GrandAdManager.TotalScore, GrandAdManager.isWinOrLoseLevel, gamemanager.instance.getLevel() + 1, GrandAdManager.TotalGGCoinsEarned);
+        GameAnalytics.NewProgressionEvent(GAProgressionStatus.Complete, "Level" + gamemanager.instance.getLevel() + 1, "Points", GrandAdManager.TotalScore);
 
         //=========================================================================================================================================================== 
         Debug.Log("API Done");

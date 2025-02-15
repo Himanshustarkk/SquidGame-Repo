@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 using MoreMountains.NiceVibrations;
+using GameAnalyticsSDK;
 
 public class Level_5_Control_Dalgona : MonoBehaviour
 {
@@ -27,6 +28,8 @@ public class Level_5_Control_Dalgona : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        GameAnalytics.NewProgressionEvent(GAProgressionStatus.Start, "Level" + gamemanager.instance.getLevel() + 1);
+
         actual_anim = "needle_idle";
     }
 
@@ -151,6 +154,8 @@ public class Level_5_Control_Dalgona : MonoBehaviour
 
         GrandAdManager.isWinOrLoseLevel = "loss";
         APIManager.Instance.UpdateGameScore(GrandAdManager.TotalScore, GrandAdManager.isWinOrLoseLevel, gamemanager.instance.getLevel() + 1, GrandAdManager.TotalGGCoinsEarned);
+        GameAnalytics.NewProgressionEvent(GAProgressionStatus.Fail, "Level" + gamemanager.instance.getLevel() + 1, "Points", GrandAdManager.TotalScore);
+
 
         //============================================================================================================================================================ 
 
@@ -210,6 +215,8 @@ public class Level_5_Control_Dalgona : MonoBehaviour
         GrandAdManager.TotalScore += 100;
 
         APIManager.Instance.UpdateGameScore(GrandAdManager.TotalScore, GrandAdManager.isWinOrLoseLevel, gamemanager.instance.getLevel() + 1, GrandAdManager.TotalGGCoinsEarned);
+        GameAnalytics.NewProgressionEvent(GAProgressionStatus.Complete, "Level" + gamemanager.instance.getLevel() + 1, "Points", GrandAdManager.TotalScore);
+
 
         Debug.Log("Total GGCoins Earned"+ GrandAdManager.TotalGGCoinsEarned);
         //=========================================================================================================================================================== 

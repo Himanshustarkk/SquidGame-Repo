@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using GameAnalyticsSDK;
 using UnityEngine;
 
 public class Level_3_Start : MonoBehaviour
@@ -11,6 +12,8 @@ public class Level_3_Start : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        GameAnalytics.NewProgressionEvent(GAProgressionStatus.Start, "Level" + gamemanager.instance.getLevel() + 1);
+
         control_script = FindObjectOfType<Level_3_Conroller>();
     }
     

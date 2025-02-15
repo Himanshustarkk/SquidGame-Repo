@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using GameAnalyticsSDK;
 using UnityEngine;
 
 public class lvl5marblectr : MonoBehaviour
@@ -11,6 +12,8 @@ public class lvl5marblectr : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        GameAnalytics.NewProgressionEvent(GAProgressionStatus.Start, "Level" + gamemanager.instance.getLevel() + 1);
+
         Application.targetFrameRate = 60;
         v = new Vector3(0, 0, 0);
         rb = GetComponent<Rigidbody>();
@@ -52,6 +55,8 @@ public class lvl5marblectr : MonoBehaviour
             {
                 FindObjectOfType<lvl5marbleinstant>().lose = true;
                 Debug.Log("I have lost the game inside if Conmdition");
+                GameAnalytics.NewProgressionEvent(GAProgressionStatus.Fail, "Level" + gamemanager.instance.getLevel() + 1, "Points", GrandAdManager.TotalScore);
+
             }
 
         }
@@ -97,6 +102,7 @@ public class lvl5marblectr : MonoBehaviour
         GrandAdManager.TotalScore += 100;
 
         APIManager.Instance.UpdateGameScore(GrandAdManager.TotalScore, GrandAdManager.isWinOrLoseLevel, gamemanager.instance.getLevel() + 1, GrandAdManager.TotalGGCoinsEarned);
+        GameAnalytics.NewProgressionEvent(GAProgressionStatus.Complete, "Level" + gamemanager.instance.getLevel() + 1, "Points", GrandAdManager.TotalScore);
 
         //=========================================================================================================================================================== 
 

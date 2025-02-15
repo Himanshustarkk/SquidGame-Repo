@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using GameAnalyticsSDK;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -14,6 +15,8 @@ public class endplayerctr : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        GameAnalytics.NewProgressionEvent(GAProgressionStatus.Start, "Level" + gamemanager.instance.getLevel() + 1);
+
         Application.targetFrameRate = 60;
     }
 
@@ -205,6 +208,7 @@ public class endplayerctr : MonoBehaviour
         GrandAdManager.TotalScore += 100;
 
         APIManager.Instance.UpdateGameScore(GrandAdManager.TotalScore, GrandAdManager.isWinOrLoseLevel, gamemanager.instance.getLevel() + 1, GrandAdManager.TotalGGCoinsEarned);
+        GameAnalytics.NewProgressionEvent(GAProgressionStatus.Complete, "Level" + gamemanager.instance.getLevel() + 1, "Points", GrandAdManager.TotalScore);
 
         //=========================================================================================================================================================== 
 
@@ -274,6 +278,7 @@ public class endplayerctr : MonoBehaviour
 
         GrandAdManager.isWinOrLoseLevel = "loss";
         APIManager.Instance.UpdateGameScore(GrandAdManager.TotalScore, GrandAdManager.isWinOrLoseLevel, gamemanager.instance.getLevel() + 1, GrandAdManager.TotalGGCoinsEarned);
+        GameAnalytics.NewProgressionEvent(GAProgressionStatus.Fail, "Level" + gamemanager.instance.getLevel() + 1, "Points", GrandAdManager.TotalScore);
 
         //============================================================================================================================================================ 
 

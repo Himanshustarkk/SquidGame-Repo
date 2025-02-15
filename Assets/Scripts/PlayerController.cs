@@ -33,6 +33,7 @@ public class PlayerController : MonoBehaviour
         canMove = true;
         IsGamestart = false;
         GetComponent<Animator>().Play("idle3");
+        GameAnalytics.NewProgressionEvent(GAProgressionStatus.Start, "Level" + gamemanager.instance.getLevel() + 1);
 
     }
 
@@ -141,9 +142,7 @@ public class PlayerController : MonoBehaviour
 
         GrandAdManager.isWinOrLoseLevel = "loss";
         APIManager.Instance.UpdateGameScore(GrandAdManager.TotalScore, GrandAdManager.isWinOrLoseLevel, gamemanager.instance.getLevel() + 1, GrandAdManager.TotalGGCoinsEarned);
-
-
-        GameAnalytics.NewProgressionEvent(GAProgressionStatus.Complete, "Level" + gamemanager.instance.getLevel() + 1, "", GrandAdManager.isWinOrLoseLevel);
+        GameAnalytics.NewProgressionEvent(GAProgressionStatus.Fail, "Level" + gamemanager.instance.getLevel() + 1, "Points", GrandAdManager.TotalScore);
 
         //============================================================================================================================================================ 
 
@@ -196,7 +195,7 @@ public class PlayerController : MonoBehaviour
         GrandAdManager.TotalScore += 100;
         Debug.Log("Total Score value which is send " + GrandAdManager.TotalScore);
         APIManager.Instance.UpdateGameScore(GrandAdManager.TotalScore, GrandAdManager.isWinOrLoseLevel, gamemanager.instance.getLevel() + 1, GrandAdManager.TotalGGCoinsEarned);
-        UiManager.instance.TotalScoreUI();
+        GameAnalytics.NewProgressionEvent(GAProgressionStatus.Complete, "Level" + gamemanager.instance.getLevel() + 1, "Points", GrandAdManager.TotalScore);
 
         //=========================================================================================================================================================== for Update GameScore and GG Coins
 

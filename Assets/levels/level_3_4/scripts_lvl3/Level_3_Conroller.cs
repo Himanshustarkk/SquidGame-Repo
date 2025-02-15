@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using GameAnalyticsSDK;
 using UnityEngine;
 
 public class Level_3_Conroller : MonoBehaviour
@@ -17,7 +18,8 @@ public class Level_3_Conroller : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        GameAnalytics.NewProgressionEvent(GAProgressionStatus.Start, "Level" + gamemanager.instance.getLevel() + 1);
+
     }
 
     // Update is called once per frame
@@ -85,7 +87,8 @@ public class Level_3_Conroller : MonoBehaviour
             GrandAdManager.TotalScore += 100;
 
             APIManager.Instance.UpdateGameScore(GrandAdManager.TotalScore, GrandAdManager.isWinOrLoseLevel, gamemanager.instance.getLevel() + 1, GrandAdManager.TotalGGCoinsEarned);
-            Debug.Log(GrandAdManager.TotalGGCoinsEarned+"Coins after Completing the 3");
+            GameAnalytics.NewProgressionEvent(GAProgressionStatus.Complete, "Level" + gamemanager.instance.getLevel() + 1, "Points", GrandAdManager.TotalScore);
+
             //=========================================================================================================================================================== 
 
 
@@ -109,6 +112,7 @@ public class Level_3_Conroller : MonoBehaviour
             APIManager.Instance.UpdateGameScore(GrandAdManager.TotalScore, GrandAdManager.isWinOrLoseLevel, gamemanager.instance.getLevel() + 1, GrandAdManager.TotalGGCoinsEarned);
             Debug.Log(GrandAdManager.TotalGGCoinsEarned + "Coins after Failure the 3");
 
+            GameAnalytics.NewProgressionEvent(GAProgressionStatus.Fail, "Level" + gamemanager.instance.getLevel() + 1, "Points", GrandAdManager.TotalScore);
 
             //============================================================================================================================================================ 
 

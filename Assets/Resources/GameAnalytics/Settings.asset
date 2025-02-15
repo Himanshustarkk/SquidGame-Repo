@@ -26,21 +26,21 @@ MonoBehaviour:
   UserMessagesFailed: 0
   CustomArea: 
   gameKey:
-  - 
+  - 8b58c8de3cc4fef4426551da9e666a1e
   secretKey:
-  - 
+  - 4cfc23891981cd9e92dc402e102c09b1d0f5af7e
   Build:
   - 0.1
   SelectedPlatformOrganization:
-  - 
+  - Global Grand Gaming Private Limited
   SelectedPlatformStudio:
-  - 
+  - Unity Games
   SelectedPlatformGame:
-  - 
-  SelectedPlatformGameID: ffffffff
+  - Squid
+  SelectedPlatformGameID: 3fc10400
   SelectedOrganization: 01000000
   SelectedStudio: 01000000
-  SelectedGame: 00000000
+  SelectedGame: 05000000
   NewVersion: 
   Changes: 
   SignUpOpen: 0
@@ -67,7 +67,7 @@ MonoBehaviour:
   ClosedHints: 
   DisplayHints: 0
   DisplayHintsScrollState: {x: 0, y: 0}
-  Logo: {fileID: 0}
+  Logo: {fileID: 2800000, guid: 98df8f9c5678a4e5d964caa1244e8958, type: 3}
   UpdateIcon: {fileID: 0}
   InfoIcon: {fileID: 0}
   DeleteIcon: {fileID: 0}
