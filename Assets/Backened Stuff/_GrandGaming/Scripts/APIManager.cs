@@ -40,8 +40,8 @@ public class APIManager : MonoBehaviour
 
     private string roomCode;
 
-    private string base_url = "https://vnwp9menq5.execute-api.us-east-1.amazonaws.com/Prod/games";
-    //private string base_url = "https://vxwuq445k5.execute-api.ap-south-1.amazonaws.com/dev/games";
+   // private string base_url = "https://vnwp9menq5.execute-api.us-east-1.amazonaws.com/Prod/games";
+    private string base_url = "https://vxwuq445k5.execute-api.ap-south-1.amazonaws.com/dev/games";
 
     private void Start()
     {
@@ -67,6 +67,7 @@ public class APIManager : MonoBehaviour
         form.room_code = roomCode;
         form.coins = coins;
         print("updating score in api");
+        print("Token Found" + userData.Data.token);
         print("Game ID : " + userData.Data.game_id);
 
         CallPostAPI<UpdatePoints>("/updateGameScore", null, form);
@@ -82,6 +83,7 @@ public class APIManager : MonoBehaviour
     {
         UnityWebRequest getRequest = UnityWebRequest.Get(uri);
         getRequest.SetRequestHeader("token", userData.Data.token);
+        Debug.Log("Calling Get API : " + uri );
         yield return getRequest.SendWebRequest();
 
         if (getRequest.result == UnityWebRequest.Result.ConnectionError || getRequest.result == UnityWebRequest.Result.ProtocolError)

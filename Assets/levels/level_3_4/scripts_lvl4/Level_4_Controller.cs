@@ -313,6 +313,7 @@ public class Level_4_Controller : MonoBehaviour
 
         print("lose worng");
         StartCoroutine(lose_panel_wait());
+        
         //inactive timer
         Level_4_Timer timer_script = FindObjectOfType<Level_4_Timer>();
         timer_script.active = false;

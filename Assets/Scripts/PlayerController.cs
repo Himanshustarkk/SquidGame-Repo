@@ -189,7 +189,7 @@ public class PlayerController : MonoBehaviour
     IEnumerator winplayer()
     {
         //=========================================================================================================================================================== for Update GameScore and GG Coins
-
+        Debug.Log("Win Player Status " + GrandAdManager.isWinOrLoseLevel);
         GrandAdManager.isWinOrLoseLevel = "win";
         GrandAdManager.TotalGGCoinsEarned += 1;
         GrandAdManager.TotalScore += 100;
