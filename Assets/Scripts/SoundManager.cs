@@ -1,4 +1,6 @@
 ﻿using System;
+using DG.Tweening.Core.Easing;
+using System.Runtime.InteropServices;
 using UnityEngine;
 
 public class SoundManager : MonoBehaviour
@@ -96,4 +98,35 @@ public class SoundManager : MonoBehaviour
                 s.audio.volume = isMuted ? 0 : s.volume;
         }
     }
+
+    // For Sounds
+    [DllImport("__Internal")]
+    private static extern void GoToURLInSameTab(string url);
+    public void ExitGame()
+    {
+        
+            string url = "https://" + FetchHostname();
+        Debug.Log("Exit Button");
+            GoToURLInSameTab(url);
+      
+
+    }
+
+    [DllImport("__Internal")]
+    private static extern IntPtr GetHostname();
+
+    public static string FetchHostname()
+    {
+        try
+        {
+            IntPtr ptr = GetHostname();
+            return Marshal.PtrToStringUTF8(ptr);
+        }
+        catch (Exception e)
+        {
+            Debug.LogError($"Failed to fetch hostname: {e.Message}");
+            return string.Empty;
+        }
+    }
+
 }

@@ -40,8 +40,8 @@ public class APIManager : MonoBehaviour
 
     private string roomCode;
 
-   // private string base_url = "https://vnwp9menq5.execute-api.us-east-1.amazonaws.com/Prod/games";
-    private string base_url = "https://vxwuq445k5.execute-api.ap-south-1.amazonaws.com/dev/games";
+    private string base_url = "https://vnwp9menq5.execute-api.us-east-1.amazonaws.com/Prod/games";
+   // private string base_url = "https://vxwuq445k5.execute-api.ap-south-1.amazonaws.com/dev/games";
 
     private void Start()
     {
