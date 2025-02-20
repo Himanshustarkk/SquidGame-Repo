@@ -4,6 +4,8 @@ using UnityEngine;
 using DG.Tweening;
 using MoreMountains.NiceVibrations;
 using GameAnalyticsSDK;
+using System.Drawing;
+using UnityEngine.PlayerLoop;
 
 public class Level_5_Control_Dalgona : MonoBehaviour
 {
@@ -208,21 +210,6 @@ public class Level_5_Control_Dalgona : MonoBehaviour
 
     IEnumerator show_win()
     {
-        //=========================================================================================================================================================== for Update GameScore and GG Coins
-        Debug.Log("GG Coins BEfooe"+ GrandAdManager.TotalGGCoinsEarned);
-        GrandAdManager.isWinOrLoseLevel = "win";
-        GrandAdManager.TotalGGCoinsEarned += 1;
-        GrandAdManager.TotalScore += 100;
-
-        APIManager.Instance.UpdateGameScore(GrandAdManager.TotalScore, GrandAdManager.isWinOrLoseLevel, gamemanager.instance.getLevel() + 1, GrandAdManager.TotalGGCoinsEarned);
-        GameAnalytics.NewProgressionEvent(GAProgressionStatus.Complete, "Level" + gamemanager.instance.getLevel() + 1, "Points", GrandAdManager.TotalScore);
-
-
-        Debug.Log("Total GGCoins Earned"+ GrandAdManager.TotalGGCoinsEarned);
-        //=========================================================================================================================================================== 
-
-
-
         print("you won");
         timer_script = FindObjectOfType<Level_5_timer>();
         timer_script.active = false;
@@ -236,6 +223,10 @@ public class Level_5_Control_Dalgona : MonoBehaviour
       //  Advertisements.Instance.ShowInterstitial();
         Level_5_controller controller_script = FindObjectOfType<Level_5_controller>();
         controller_script.show_win_panel();
+
+      
+
+
     }
 
 

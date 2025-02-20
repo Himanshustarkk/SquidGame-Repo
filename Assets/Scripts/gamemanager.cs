@@ -46,7 +46,7 @@ public class gamemanager : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.A))
+       /* if (Input.GetKeyDown(KeyCode.A))
         {
             resetall();
         }
@@ -58,7 +58,7 @@ public class gamemanager : MonoBehaviour
                 return;
 
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-        }
+        }*/
     }
 
 

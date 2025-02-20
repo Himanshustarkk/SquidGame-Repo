@@ -44,15 +44,18 @@ public class startmygame : MonoBehaviour
 
         // Begin loading the next scene asynchronously
         AsyncOperation operation = SceneManager.LoadSceneAsync(nextSceneIndex);
-
-        // While the scene is still loading, update the slider
-        while (!operation.isDone)
+        // Simulate a smooth 2-second loading bar
+        float elapsedTime = 0f;
+        while (elapsedTime < 2f)
         {
-            float progress = Mathf.Clamp01(operation.progress / 0.9f);
+            elapsedTime += Time.deltaTime;
+            float progress = elapsedTime / 2f; // Normalize progress (0 to 1 over 2 seconds)
+
             if (loadingSlider != null)
             {
                 loadingSlider.value = progress;
             }
+
             yield return null;
         }
 

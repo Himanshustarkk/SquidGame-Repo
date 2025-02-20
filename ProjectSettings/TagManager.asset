@@ -12,6 +12,8 @@ TagManager:
   - food
   - lvl3_enm
   - enemy
+  - GGCoinText
+  - GGCoinSprite
   layers:
   - Default
   - TransparentFX

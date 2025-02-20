@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using GameAnalyticsSDK;
 using UnityEngine;
 
 public class Level_5_controller : MonoBehaviour
@@ -56,7 +57,21 @@ public class Level_5_controller : MonoBehaviour
     public void show_win_panel()
     {
         win_panel.SetActive(true);
-       
+
+
+        //=========================================================================================================================================================== for Update GameScore and GG Coins
+        Debug.Log("GG Coins BEfooe" + GrandAdManager.TotalGGCoinsEarned);
+        GrandAdManager.isWinOrLoseLevel = "win";
+        APIManager.Instance.coinsEarningLevelBased(gamemanager.instance.getLevel() + 1);
+        GrandAdManager.TotalScore += 100;
+
+        APIManager.Instance.UpdateGameScore(GrandAdManager.TotalScore, GrandAdManager.isWinOrLoseLevel, gamemanager.instance.getLevel() + 1, GrandAdManager.TotalGGCoinsEarned);
+        GameAnalytics.NewProgressionEvent(GAProgressionStatus.Complete, "Level" + gamemanager.instance.getLevel() + 1, "Points", GrandAdManager.TotalScore);
+
+
+        Debug.Log("Total GGCoins Earned" + GrandAdManager.TotalGGCoinsEarned);
+        //=========================================================================================================================================================== 
+
     }
 
     public void show_lose_panel()

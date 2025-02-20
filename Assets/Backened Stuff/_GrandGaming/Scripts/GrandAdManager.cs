@@ -1,3 +1,5 @@
+using System.Drawing;
+using System;
 using System.Runtime.InteropServices;
 using UnityEngine;
 
@@ -13,6 +15,7 @@ public class GrandAdManager : MonoBehaviour
     public static int TotalScore;
     public static int score;
     public static string isWinOrLoseLevel;
+
 
     private void Awake()
     {
@@ -45,4 +48,6 @@ public class GrandAdManager : MonoBehaviour
             Marshal.FreeHGlobal(utf8StrPtr);
         }
     }
+    
+
 }

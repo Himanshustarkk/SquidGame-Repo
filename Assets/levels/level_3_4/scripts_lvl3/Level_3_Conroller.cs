@@ -80,16 +80,6 @@ public class Level_3_Conroller : MonoBehaviour
         if(enemies.Count <= 6)
         {
 
-            //=========================================================================================================================================================== for Update GameScore and GG Coins
-
-            GrandAdManager.isWinOrLoseLevel = "win";
-            GrandAdManager.TotalGGCoinsEarned += 1;
-            GrandAdManager.TotalScore += 100;
-
-            APIManager.Instance.UpdateGameScore(GrandAdManager.TotalScore, GrandAdManager.isWinOrLoseLevel, gamemanager.instance.getLevel() + 1, GrandAdManager.TotalGGCoinsEarned);
-            GameAnalytics.NewProgressionEvent(GAProgressionStatus.Complete, "Level" + gamemanager.instance.getLevel() + 1, "Points", GrandAdManager.TotalScore);
-
-            //=========================================================================================================================================================== 
 
 
             game_run = false;
@@ -202,6 +192,19 @@ public class Level_3_Conroller : MonoBehaviour
         yield return new WaitForSeconds(4f);
         panel_win.SetActive(true);
         panel_arrow.SetActive(false);
+
+
+
+        //=========================================================================================================================================================== for Update GameScore and GG Coins
+
+        GrandAdManager.isWinOrLoseLevel = "win";
+        APIManager.Instance.coinsEarningLevelBased(gamemanager.instance.getLevel() + 1);
+        GrandAdManager.TotalScore += 100;
+        APIManager.Instance.UpdateGameScore(GrandAdManager.TotalScore, GrandAdManager.isWinOrLoseLevel, gamemanager.instance.getLevel() + 1, GrandAdManager.TotalGGCoinsEarned);
+        GameAnalytics.NewProgressionEvent(GAProgressionStatus.Complete, "Level" + gamemanager.instance.getLevel() + 1, "Points", GrandAdManager.TotalScore);
+
+        //=========================================================================================================================================================== 
+
     }
 
     IEnumerator wait_lose()

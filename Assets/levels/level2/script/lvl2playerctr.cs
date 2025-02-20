@@ -209,19 +209,6 @@ public class lvl2playerctr : MonoBehaviour
 	IEnumerator winplayer()
 	{
 
-        //=========================================================================================================================================================== for Update GameScore and GG Coins
-
-        GrandAdManager.isWinOrLoseLevel = "win";
-        GrandAdManager.TotalGGCoinsEarned += 1;
-		GrandAdManager.TotalScore += 100;
-        APIManager.Instance.UpdateGameScore(GrandAdManager.TotalScore, GrandAdManager.isWinOrLoseLevel, gamemanager.instance.getLevel() + 1, GrandAdManager.TotalGGCoinsEarned);
-
-
-        GameAnalytics.NewProgressionEvent(GAProgressionStatus.Complete, "Level" + gamemanager.instance.getLevel() + 1, "Points", GrandAdManager.TotalScore);
-
-
-        //=========================================================================================================================================================== for Update GameSc
-
         transform.eulerAngles = new Vector3(0, 180, 0);
 		FindObjectOfType<UiManager>().wineffet.SetActive(true);
 		GetComponent<Animator>().Play("win");
@@ -230,11 +217,25 @@ public class lvl2playerctr : MonoBehaviour
 		yield return new WaitForSeconds(5f);
 		FindObjectOfType<UiManager>().winpanel.SetActive(true);
 		Debug.Log("Getting Levels Details" + gamemanager.instance.getLevel());
-	
 
-	}
+        //=========================================================================================================================================================== for Update GameScore and GG Coins
 
-	IEnumerator dieplayer()
+        GrandAdManager.isWinOrLoseLevel = "win";
+        APIManager.Instance.coinsEarningLevelBased(gamemanager.instance.getLevel() + 1);
+        GrandAdManager.TotalScore += 100;
+        APIManager.Instance.UpdateGameScore(GrandAdManager.TotalScore, GrandAdManager.isWinOrLoseLevel, gamemanager.instance.getLevel() + 1, GrandAdManager.TotalGGCoinsEarned);
+
+
+        GameAnalytics.NewProgressionEvent(GAProgressionStatus.Complete, "Level" + gamemanager.instance.getLevel() + 1, "Points", GrandAdManager.TotalScore);
+
+
+        //=========================================================================================================================================================== for Update GameSc
+
+
+
+    }
+
+    IEnumerator dieplayer()
 	{
 
 

@@ -347,16 +347,7 @@ public class Level_4_Controller : MonoBehaviour
 
     public void on_final()
     {
-        //=========================================================================================================================================================== for Update GameScore and GG Coins
-        Debug.Log("Before API Done");
-
-        GrandAdManager.isWinOrLoseLevel = "win";
-        GrandAdManager.TotalGGCoinsEarned += 1;
-        GrandAdManager.TotalScore += 100;
-        APIManager.Instance.UpdateGameScore(GrandAdManager.TotalScore, GrandAdManager.isWinOrLoseLevel, gamemanager.instance.getLevel() + 1, GrandAdManager.TotalGGCoinsEarned);
-        GameAnalytics.NewProgressionEvent(GAProgressionStatus.Complete, "Level" + gamemanager.instance.getLevel() + 1, "Points", GrandAdManager.TotalScore);
-
-        //=========================================================================================================================================================== 
+      
         Debug.Log("API Done");
 
         //play confetti
@@ -478,9 +469,19 @@ public class Level_4_Controller : MonoBehaviour
         Level_4_Timer timer_script = FindObjectOfType<Level_4_Timer>();
         timer_script.active = false;
 
-        yield return new WaitForSeconds(4f);
+        yield return new WaitForSeconds(2f);
         win_panel.SetActive(true);
         InGame_Panel.SetActive(false);
+        //=========================================================================================================================================================== for Update GameScore and GG Coins
+        Debug.Log("Before API Done");
+
+        GrandAdManager.isWinOrLoseLevel = "win";
+        APIManager.Instance.coinsEarningLevelBased(gamemanager.instance.getLevel() + 1);
+        GrandAdManager.TotalScore += 100;
+        APIManager.Instance.UpdateGameScore(GrandAdManager.TotalScore, GrandAdManager.isWinOrLoseLevel, gamemanager.instance.getLevel() + 1, GrandAdManager.TotalGGCoinsEarned);
+        GameAnalytics.NewProgressionEvent(GAProgressionStatus.Complete, "Level" + gamemanager.instance.getLevel() + 1, "Points", GrandAdManager.TotalScore);
+
+        //=========================================================================================================================================================== 
     }
 
     IEnumerator lose_panel_wait()

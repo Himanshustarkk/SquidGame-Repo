@@ -201,16 +201,7 @@ public class endplayerctr : MonoBehaviour
 
     IEnumerator winplayer()
     {
-        //=========================================================================================================================================================== for Update GameScore and GG Coins
-
-        GrandAdManager.isWinOrLoseLevel = "win";
-        GrandAdManager.TotalGGCoinsEarned += 1;
-        GrandAdManager.TotalScore += 100;
-
-        APIManager.Instance.UpdateGameScore(GrandAdManager.TotalScore, GrandAdManager.isWinOrLoseLevel, gamemanager.instance.getLevel() + 1, GrandAdManager.TotalGGCoinsEarned);
-        GameAnalytics.NewProgressionEvent(GAProgressionStatus.Complete, "Level" + gamemanager.instance.getLevel() + 1, "Points", GrandAdManager.TotalScore);
-
-        //=========================================================================================================================================================== 
+        
 
         UiManager uiManager = FindObjectOfType<UiManager>();
         if (uiManager == null)
@@ -256,6 +247,16 @@ public class endplayerctr : MonoBehaviour
         else
         {
             uiManager.winpanel.SetActive(true);
+            //=========================================================================================================================================================== for Update GameScore and GG Coins
+
+            GrandAdManager.isWinOrLoseLevel = "win";
+            APIManager.Instance.coinsEarningLevelBased(gamemanager.instance.getLevel() + 1);
+            GrandAdManager.TotalScore += 100;
+
+            APIManager.Instance.UpdateGameScore(GrandAdManager.TotalScore, GrandAdManager.isWinOrLoseLevel, gamemanager.instance.getLevel() + 1, GrandAdManager.TotalGGCoinsEarned);
+            GameAnalytics.NewProgressionEvent(GAProgressionStatus.Complete, "Level" + gamemanager.instance.getLevel() + 1, "Points", GrandAdManager.TotalScore);
+
+            //=========================================================================================================================================================== 
         }
 
         Debug.Log("After Active Function");

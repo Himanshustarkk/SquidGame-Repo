@@ -59,7 +59,7 @@ public class lvl5marbleinstant : MonoBehaviour
 
         FindObjectOfType<UiManager>().startcount = false;
         SoundManager.instance.Play("lose");
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(2f);
         FindObjectOfType<UiManager>().losepanel.SetActive(true);
     }
 }

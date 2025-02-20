@@ -1,4 +1,6 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
+using System.Runtime.InteropServices;
 using DG.Tweening.Core.Easing;
 using TMPro;
 using UnityEngine;
@@ -103,17 +105,18 @@ public class UiManager : MonoBehaviour
 
     public void nextlvl()
     {
-        GrandAdManager.instance.ShowAd("startAd");
+        //GrandAdManager.instance.ShowAd("startAd");
 
         Debug.Log("This is Current Level " + gamemanager.instance.getLevel()); 
         SoundManager.instance.Stop("click");
 
         int nextLevel = gamemanager.instance.getLevel() + 1;
 
-        if (nextLevel > 7)
+        if (nextLevel > 6)
         {
             nextLevel = 0; // Reset if exceeding max level
         }
+
 
         gamemanager.instance.setLevel(nextLevel);
         PlayerPrefs.Save(); // Ensure PlayerPrefs is updated before loading the new scene
@@ -165,5 +168,34 @@ public class UiManager : MonoBehaviour
     public void TotalScoreUI()
     {
         ScoreUI_Count.GetComponent<TextMeshProUGUI>().text=GrandAdManager.TotalScore.ToString();
+    }
+    // For Sounds
+    [DllImport("__Internal")]
+    private static extern void GoToURLInSameTab(string url);
+    public void ExitGame()
+    {
+
+        string url = "https://" + FetchHostname();
+        Debug.Log("Exit Button");
+        GoToURLInSameTab(url);
+
+
+    }
+
+    [DllImport("__Internal")]
+    private static extern IntPtr GetHostname();
+
+    public static string FetchHostname()
+    {
+        try
+        {
+            IntPtr ptr = GetHostname();
+            return Marshal.PtrToStringUTF8(ptr);
+        }
+        catch (Exception e)
+        {
+            Debug.LogError($"Failed to fetch hostname: {e.Message}");
+            return string.Empty;
+        }
     }
 }

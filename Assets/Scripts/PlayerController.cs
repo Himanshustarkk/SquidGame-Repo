@@ -188,20 +188,7 @@ public class PlayerController : MonoBehaviour
 
     IEnumerator winplayer()
     {
-        //=========================================================================================================================================================== for Update GameScore and GG Coins
-        Debug.Log("Win Player Status " + GrandAdManager.isWinOrLoseLevel);
-        GrandAdManager.isWinOrLoseLevel = "win";
-        GrandAdManager.TotalGGCoinsEarned += 1;
-        GrandAdManager.TotalScore += 100;
-        Debug.Log("Total Score value which is send " + GrandAdManager.TotalScore);
-        APIManager.Instance.UpdateGameScore(GrandAdManager.TotalScore, GrandAdManager.isWinOrLoseLevel, gamemanager.instance.getLevel() + 1, GrandAdManager.TotalGGCoinsEarned);
-        GameAnalytics.NewProgressionEvent(GAProgressionStatus.Complete, "Level" + gamemanager.instance.getLevel() + 1, "Points", GrandAdManager.TotalScore);
-
-        //=========================================================================================================================================================== for Update GameScore and GG Coins
-
-
-
-
+     
         transform.eulerAngles = new Vector3(0, 180, 0);
         FindObjectOfType<UiManager>().wineffet.SetActive(true);
         GetComponent<Animator>().Play("win");
@@ -211,5 +198,22 @@ public class PlayerController : MonoBehaviour
         //Gley.MobileAds.Internal.MobileAdsExample.Instance.ShowInterstitial();
         FindObjectOfType<UiManager>().winpanel.SetActive(true);
         Debug.Log("Inside WinPlayer");
+
+
+        //=========================================================================================================================================================== for Update GameScore and GG Coins
+        APIManager.Instance.coinsEarningLevelBased(gamemanager.instance.getLevel() + 1);
+        GrandAdManager.isWinOrLoseLevel = "win";
+        GrandAdManager.TotalScore += 100;
+        APIManager.Instance.UpdateGameScore(GrandAdManager.TotalScore, GrandAdManager.isWinOrLoseLevel, gamemanager.instance.getLevel() + 1, GrandAdManager.TotalGGCoinsEarned);
+
+
+        GameAnalytics.NewProgressionEvent(GAProgressionStatus.Complete, "Level" + gamemanager.instance.getLevel() + 1, "Points", GrandAdManager.TotalScore);
+
+
+        Debug.Log("Total Score value which is send " + GrandAdManager.TotalScore);
+        Debug.Log("Win Player Status " + GrandAdManager.isWinOrLoseLevel);
+
+        //=========================================================================================================================================================== for Update GameScore and GG Coins
+
     }
 }

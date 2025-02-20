@@ -95,16 +95,7 @@ public class lvl5marblectr : MonoBehaviour
     IEnumerator winplayer()
     {
 
-        //=========================================================================================================================================================== for Update GameScore and GG Coins
-
-        GrandAdManager.isWinOrLoseLevel = "Win";
-        GrandAdManager.TotalGGCoinsEarned += 1;
-        GrandAdManager.TotalScore += 100;
-
-        APIManager.Instance.UpdateGameScore(GrandAdManager.TotalScore, GrandAdManager.isWinOrLoseLevel, gamemanager.instance.getLevel() + 1, GrandAdManager.TotalGGCoinsEarned);
-        GameAnalytics.NewProgressionEvent(GAProgressionStatus.Complete, "Level" + gamemanager.instance.getLevel() + 1, "Points", GrandAdManager.TotalScore);
-
-        //=========================================================================================================================================================== 
+        
 
 
         FindObjectOfType<UiManager>().wineffet.SetActive(true);
@@ -113,6 +104,17 @@ public class lvl5marblectr : MonoBehaviour
         yield return new WaitForSeconds(3f);
         // Gley.MobileAds.Internal.MobileAdsExample.Instance.ShowInterstitial();
         FindObjectOfType<UiManager>().winpanel.SetActive(true);
+
+        //=========================================================================================================================================================== for Update GameScore and GG Coins
+
+        GrandAdManager.isWinOrLoseLevel = "Win";
+        APIManager.Instance.coinsEarningLevelBased(gamemanager.instance.getLevel() + 1);
+        GrandAdManager.TotalScore += 100;
+
+        APIManager.Instance.UpdateGameScore(GrandAdManager.TotalScore, GrandAdManager.isWinOrLoseLevel, gamemanager.instance.getLevel() + 1, GrandAdManager.TotalGGCoinsEarned);
+        GameAnalytics.NewProgressionEvent(GAProgressionStatus.Complete, "Level" + gamemanager.instance.getLevel() + 1, "Points", GrandAdManager.TotalScore);
+
+        //=========================================================================================================================================================== 
 
     }
 }
