@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using GameAnalyticsSDK;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -32,6 +33,10 @@ public class endplayerctr : MonoBehaviour
             GetComponent<Animator>().speed=1.2f;
             
             FindObjectOfType<UiManager>().startpanel.SetActive(false);
+            TextMeshProUGUI _GGCoinTextConsistent = GameObject.FindGameObjectWithTag("GGConsistenCoin").GetComponent<TextMeshProUGUI>();
+            _GGCoinTextConsistent.text = GrandAdManager.TotalGGCoinsEarned.ToString();
+            Debug.Log(" Consistent UI Executed *****  GG coinsearnerd && UI Text ***** " + GrandAdManager.TotalGGCoinsEarned + "   " + _GGCoinTextConsistent.text);
+
             //gamemanager.instance.gamePlaypanel.SetActive(true);
             //gamemanager.instance.gamePlaypanel.SetActive(true);
         }

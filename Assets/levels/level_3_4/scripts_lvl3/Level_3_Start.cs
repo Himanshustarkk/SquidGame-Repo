@@ -1,12 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using GameAnalyticsSDK;
+using TMPro;
 using UnityEngine;
 
 public class Level_3_Start : MonoBehaviour
 {
-    public GameObject panel_arrow;
-    public GameObject panel_start;
+    public GameObject controls;
+    public GameObject Tutorial_Panel;
     Level_3_Conroller control_script;
 
     // Start is called before the first frame update
@@ -21,8 +22,11 @@ public class Level_3_Start : MonoBehaviour
     {
         control_script.game_run = true;
 
-        panel_arrow.SetActive(true);
-        panel_start.SetActive(false);
+        controls.SetActive(true);
+        TextMeshProUGUI _GGCoinTextConsistent = GameObject.FindGameObjectWithTag("GGConsistenCoin").GetComponent<TextMeshProUGUI>();
+        _GGCoinTextConsistent.text = GrandAdManager.TotalGGCoinsEarned.ToString();
+        Tutorial_Panel.SetActive(false);
+
 
     }
 }

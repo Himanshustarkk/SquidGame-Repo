@@ -132,6 +132,9 @@ public class UiManager : MonoBehaviour
         FindObjectOfType<PlayerController>().GmRun = true;
         startpanel.SetActive(false);
         gameplaypanel.SetActive(true);
+        TextMeshProUGUI _GGCoinTextConsistent = GameObject.FindGameObjectWithTag("GGConsistenCoin").GetComponent<TextMeshProUGUI>();
+        _GGCoinTextConsistent.text = GrandAdManager.TotalGGCoinsEarned.ToString();
+        Debug.Log(" Consistent UI Executed *****  GG coinsearnerd && UI Text ***** "+GrandAdManager.TotalGGCoinsEarned + "   "+ _GGCoinTextConsistent.text);
         startcount = true;
     }
 
@@ -143,6 +146,10 @@ public class UiManager : MonoBehaviour
         FindObjectOfType<lvl2playerctr>().GmRun = true;
         startpanel.SetActive(false);
         gameplaypanel.SetActive(true);
+        TextMeshProUGUI _GGCoinTextConsistent = GameObject.FindGameObjectWithTag("GGConsistenCoin").GetComponent<TextMeshProUGUI>();
+        _GGCoinTextConsistent.text = GrandAdManager.TotalGGCoinsEarned.ToString();
+        Debug.Log(" Consistent UI Executed *****  GG coinsearnerd && UI Text ***** " + GrandAdManager.TotalGGCoinsEarned + "   " + _GGCoinTextConsistent.text);
+
         startcount = true;
     }
 
@@ -153,6 +160,9 @@ public class UiManager : MonoBehaviour
         SoundManager.instance.Play("click");*/
         startpanel.SetActive(false);
         gameplaypanel.SetActive(true);
+        TextMeshProUGUI _GGCoinTextConsistent = GameObject.FindGameObjectWithTag("GGConsistenCoin").GetComponent<TextMeshProUGUI>();
+        _GGCoinTextConsistent.text = GrandAdManager.TotalGGCoinsEarned.ToString();
+        Debug.Log(" Consistent UI Executed *****  GG coinsearnerd && UI Text ***** " + GrandAdManager.TotalGGCoinsEarned + "   " + _GGCoinTextConsistent.text);
         startcount = true;
     }
 

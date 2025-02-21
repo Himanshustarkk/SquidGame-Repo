@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class Level_4_Ui : MonoBehaviour
@@ -22,6 +23,8 @@ public class Level_4_Ui : MonoBehaviour
 
         panel_InGame.SetActive(true);
         panel_start.SetActive(false);
+        TextMeshProUGUI _GGCoinTextConsistent = GameObject.FindGameObjectWithTag("GGConsistenCoin").GetComponent<TextMeshProUGUI>();
+        _GGCoinTextConsistent.text = GrandAdManager.TotalGGCoinsEarned.ToString();
         timer_script.active = true;
 
     }

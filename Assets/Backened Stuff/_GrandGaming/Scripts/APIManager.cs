@@ -34,7 +34,7 @@ public class APIManager : MonoBehaviour
     private int iv;
     private int coins=1;
     private int scorebase;
-    private int levelbase=2;
+    private int levelbase=1;
 
     private int user_id;
 
@@ -50,9 +50,6 @@ public class APIManager : MonoBehaviour
         GameAnalytics.Initialize();
         Debug.Log("UserId In Start Function" + user_id);
         StartGame();
-
-
-
     }
 
     public void UpdateGameScore(int score, string winOrLoss, int level, int coins)
@@ -200,35 +197,24 @@ public class APIManager : MonoBehaviour
         try
         {
 
-            Debug.Log("Updating the Coins UI");
+            Debug.Log("Updating the Coins UI"+ GrandAdManager.TotalGGCoinsEarned);
 
             if (coins > 0)  //if any coins to be given
             {
-                Debug.Log("Updating the Coins UI");
+                Debug.Log("Updating the Coins UI"+ GrandAdManager.TotalGGCoinsEarned);
 
                 if (levelbase > 0)
                 {
-                    Debug.Log("Updating the Coins UI");
 
                     if ((userlevel % levelbase) == 0)
                     {
-                        TextMeshProUGUI _GGCoinText = GameObject.FindGameObjectWithTag("GGCoinText").GetComponent<TextMeshProUGUI>();
-                        
+
+                        Debug.Log(" BEfore ****** GG Coin Logic EXecuting + userlevel + levelbase******" + GrandAdManager.TotalGGCoinsEarned + "    " + userlevel + "  " + levelbase);
                         GrandAdManager.TotalGGCoinsEarned += 1;
-                        Debug.Log("Updating the Coins UI");
-                        Debug.Log("TotalGg CoinsEarned" + GrandAdManager.TotalGGCoinsEarned);
+                        Debug.Log("AFter ****** GG Coin Logic EXecuting + userlevel + levelbase ****" + GrandAdManager.TotalGGCoinsEarned+"   "+userlevel+"  "+levelbase);
+                        TextMeshProUGUI _GGCoinText = GameObject.FindGameObjectWithTag("GGCoinText").GetComponent<TextMeshProUGUI>();
                         _GGCoinText.text = GrandAdManager.TotalGGCoinsEarned.ToString();
-
-
-                        //coinsearned = (int)((userlevel / levelbase) * coins);
-                        /*if (coinsearned > 0)
-                        {
-                            //display coins on game UI using below variables
-
-
-                            //Response.Write("Coins earned " + coins);
-                            //Response.Write("Total coins " + coinsearned);
-                        }*/
+                        Debug.Log("AFter ******UI Implmnetd the value of  GGCoin Text******"+"    "+_GGCoinText.ToString());
                     }
                     else
                     {
