@@ -144,7 +144,12 @@ public class UiManager : MonoBehaviour
 
         }
         startpanel.SetActive(false);
-        gameplaypanel.SetActive(true);
+        if(gameplaypanel!=null)
+        {
+            gameplaypanel.SetActive(true);
+
+        }
+
         TextMeshProUGUI _GGCoinTextConsistent = GameObject.FindGameObjectWithTag("GGConsistenCoin").GetComponent<TextMeshProUGUI>();
         _GGCoinTextConsistent.text = GrandAdManager.TotalGGCoinsEarned.ToString();
         Debug.Log(" Consistent UI Executed *****  GG coinsearnerd && UI Text ***** "+GrandAdManager.TotalGGCoinsEarned + "   "+ _GGCoinTextConsistent.text);
