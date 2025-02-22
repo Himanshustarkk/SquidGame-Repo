@@ -17,6 +17,8 @@ public class Level_5_boxControl : MonoBehaviour
     Sequence sequence;
     public Ease ease;
     public GameObject panel_timer;
+    public Level_5_timer level_5_Timer;
+    public static bool boxClicked = false;
 
     // Start is called before the first frame update
     void Start()
@@ -24,6 +26,11 @@ public class Level_5_boxControl : MonoBehaviour
         control_dalgona_chosen = list_control_dalgona[Random.Range(0, list_control_dalgona.Length)];
         //control_dalgona_chosen.gameObject.SetActive(true);
 
+    }
+
+    private void OnMouseDown()
+    {
+        boxClicked = true;
     }
 
     public void show_dagona()

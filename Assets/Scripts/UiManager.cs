@@ -39,7 +39,7 @@ public class UiManager : MonoBehaviour
     void Start()
     {
 
-        SoundManager.instance.Play("start");
+       // SoundManager.instance.Play("start");
         // Advertisements.Instance.Initialize();
         // Gley.MobileAds.Internal.MobileAdsExample.Instance.ShawBanner();
         //LevelText.text = "Level " + (gamemanager.instance.getLevel() + 1);
@@ -82,8 +82,7 @@ public class UiManager : MonoBehaviour
 
     public void btn_retry()
     {
-        GrandAdManager.instance.ShowAd("startAd");
-
+       // GrandAdManager.instance.ShowAd("startAd");
         print(gamemanager.instance.getlive());
         gamemanager.instance.setlive(gamemanager.instance.getlive() + 1);
         if (gamemanager.instance.getlive() > 2)
@@ -97,6 +96,11 @@ public class UiManager : MonoBehaviour
             SceneManager.LoadScene(gamemanager.instance.getLevel() + 1);
         }
         SoundManager.instance.Stop("click");
+        if(gamemanager.instance.getLevel()==6)
+        {
+            Level_5_boxControl.boxClicked = false;
+
+        }
         // sound
         //SoundManager.instance.Play("click");
         //gamemanager.instance.setLevel(gamemanager.instance.getLevel()-1);
@@ -128,8 +132,17 @@ public class UiManager : MonoBehaviour
     {
 
         PlayerController.IsGamestart = true;
-        SoundManager.instance.Play("click");
-        FindObjectOfType<PlayerController>().GmRun = true;
+        ///SoundManager.instance.Play("click");
+        PlayerController playerController = FindObjectOfType<PlayerController>();
+        if(playerController == null)
+        {
+            Debug.Log("Player Controll null");
+        }
+        else
+        {
+            playerController.GmRun = true;
+
+        }
         startpanel.SetActive(false);
         gameplaypanel.SetActive(true);
         TextMeshProUGUI _GGCoinTextConsistent = GameObject.FindGameObjectWithTag("GGConsistenCoin").GetComponent<TextMeshProUGUI>();

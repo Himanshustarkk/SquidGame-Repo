@@ -34,8 +34,13 @@ public class Level_5_controller : MonoBehaviour
         Ray ray = cam.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;
 
+        Debug.DrawRay(ray.origin, ray.direction * 100, Color.red, 2f); // Red line for visualization
+
+
         if (Physics.Raycast(ray, out hit, Mathf.Infinity, box_layer))
         {
+            Debug.DrawRay(ray.origin, ray.direction * 100, Color.red, 2f); // Red line for visualization
+
             Debug.Log("Hit with "+hit.collider.name+"this is layer name "+box_layer);
             active = false;
             Level_5_boxControl box_script = hit.collider.GetComponent<Level_5_boxControl>();
@@ -46,10 +51,20 @@ public class Level_5_controller : MonoBehaviour
             box_script.show_dagona();
 
             box_script.move_cam_move_cover();
+            
         }
+
     }
 
     public void start_game()
+    {
+        Debug.Log("Isnide the start _game");
+        Invoke(nameof(ActiveDalgon),1f);
+        Debug.Log("After the start _game");
+
+    }
+
+    void ActiveDalgon()
     {
         control_dalgona_chosen.active = true;
     }
@@ -57,8 +72,14 @@ public class Level_5_controller : MonoBehaviour
     public void show_win_panel()
     {
         win_panel.SetActive(true);
-
-
+        if(win_panel==null)
+        {
+            Debug.Log("Win Panel is Null");
+        }
+        else
+        {
+            Debug.Log("Found the Win Panel");
+        }
         //=========================================================================================================================================================== for Update GameScore and GG Coins
         Debug.Log("GG Coins BEfooe" + GrandAdManager.TotalGGCoinsEarned);
         GrandAdManager.isWinOrLoseLevel = "win";
@@ -77,6 +98,14 @@ public class Level_5_controller : MonoBehaviour
     public void show_lose_panel()
     {
         lose_panel.SetActive(true);
+        if (lose_panel == null)
+        {
+            Debug.Log("Lose Panel is Null");
+        }
+        else
+        {
+            Debug.Log("Found the loss Panel");
+        }
     }
 
 }

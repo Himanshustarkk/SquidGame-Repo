@@ -193,6 +193,7 @@ public class APIManager : MonoBehaviour
 
     public void coinsEarningLevelBased(double userlevel)
     {
+        Debug.Log("CoinsEarningCalled");
         //token will be received from index page to unity
         try
         {
@@ -205,6 +206,7 @@ public class APIManager : MonoBehaviour
 
                 if (levelbase > 0)
                 {
+
 
                     if ((userlevel % levelbase) == 0)
                     {

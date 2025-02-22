@@ -188,6 +188,7 @@ public class PlayerController : MonoBehaviour
 
     IEnumerator winplayer()
     {
+        Debug.Log("Win Player Claled 2 Timnes");
      
         transform.eulerAngles = new Vector3(0, 180, 0);
         FindObjectOfType<UiManager>().wineffet.SetActive(true);

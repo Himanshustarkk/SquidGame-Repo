@@ -152,7 +152,7 @@ public class Level_5_Control_Dalgona : MonoBehaviour
     IEnumerator show_lose()
     {
 
-        //=========================================================================================================================================================== for Update GameScore and GG Coins
+       /* //=========================================================================================================================================================== for Update GameScore and GG Coins
 
         GrandAdManager.isWinOrLoseLevel = "loss";
         APIManager.Instance.UpdateGameScore(GrandAdManager.TotalScore, GrandAdManager.isWinOrLoseLevel, gamemanager.instance.getLevel() + 1, GrandAdManager.TotalGGCoinsEarned);
@@ -160,7 +160,7 @@ public class Level_5_Control_Dalgona : MonoBehaviour
 
 
         //============================================================================================================================================================ 
-
+*/
 
 
 

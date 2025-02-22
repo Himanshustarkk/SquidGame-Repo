@@ -11,14 +11,21 @@ public class Level_5_timer : MonoBehaviour
     public Text text_timer;
     public float total_time, max_time, timer;
     Level_5_controller control_script;
-    public GameObject guide , btn_start;
+    public GameObject guide , btn_start, MainInfo;
 
     // Start is called before the first frame update
     void Start()
     {
         control_script = FindObjectOfType<Level_5_controller>();
+        if(control_script == null )
+        {
+            Debug.Log("Script is nul");
+        }    
+        else
+        {
+            text_timer.text = total_time.ToString();
 
-        text_timer.text = total_time.ToString();
+        }
     }
 
     // Update is called once per frame
@@ -68,10 +75,21 @@ public class Level_5_timer : MonoBehaviour
 
     public void btn_start_game()
     {
-        active = true;
-        btn_start.SetActive(false);
-        guide.SetActive(false);
+        if (Level_5_boxControl.boxClicked)
+        {
+            active = true;
 
-        control_script.start_game();
+            btn_start.SetActive(false);
+            InGame_panel.SetActive(true);
+            if (control_script == null)
+            {
+                Debug.Log("Control script is null");
+            }
+            else
+            {
+                control_script.start_game();
+
+            }
+        }
     }
 }
