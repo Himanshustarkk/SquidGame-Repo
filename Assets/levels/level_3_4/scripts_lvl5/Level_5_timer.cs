@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -77,6 +78,16 @@ public class Level_5_timer : MonoBehaviour
     {
         if (Level_5_boxControl.boxClicked)
         {
+            TextMeshProUGUI _GGCoinTextConsistent = GameObject.FindGameObjectWithTag("GGConsistenCoin").GetComponent<TextMeshProUGUI>();
+            if (_GGCoinTextConsistent != null)
+            {
+                _GGCoinTextConsistent.text = GrandAdManager.TotalGGCoinsEarned.ToString();
+            }
+            else
+            {
+
+
+            }
             active = true;
 
             btn_start.SetActive(false);

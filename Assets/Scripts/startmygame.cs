@@ -34,6 +34,7 @@ public class startmygame : MonoBehaviour
         {
             gamemanager.instance.setLevel(0);
             nextSceneIndex = 1;
+            GrandAdManager.TotalGGCoinsEarned = 0;
         }
         else
         {

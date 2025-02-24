@@ -139,7 +139,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &46648977
 RectTransform:
   m_ObjectHideFlags: 0
@@ -150,7 +150,7 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1.3624, y: 1.3624, z: 1.3624}
-  m_ConstrainProportionsScale: 0
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 873452239}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -208,6 +208,7 @@ GameObject:
   - component: {fileID: 200420720}
   - component: {fileID: 200420722}
   - component: {fileID: 200420721}
+  - component: {fileID: 200420723}
   m_Layer: 5
   m_Name: NPOT
   m_TagString: Untagged
@@ -231,7 +232,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 663.4888}
+  m_AnchoredPosition: {x: 0, y: 78}
   m_SizeDelta: {x: 761.908, y: 609.5264}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &200420721
@@ -272,6 +273,27 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 200420719}
   m_CullTransparentMesh: 1
+--- !u!95 &200420723
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 200420719}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: bbbe7b3049bd1ce47833e3199cd52014, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &312799181
 GameObject:
   m_ObjectHideFlags: 0
@@ -1122,7 +1144,7 @@ PrefabInstance:
     - target: {fileID: 1107362111564426391, guid: 12f2c636a2158cb44995cd12d40e15e7,
         type: 3}
       propertyPath: showAds
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3253425231366295805, guid: 12f2c636a2158cb44995cd12d40e15e7,
         type: 3}

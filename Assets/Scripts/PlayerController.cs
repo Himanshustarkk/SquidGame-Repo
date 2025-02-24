@@ -34,6 +34,7 @@ public class PlayerController : MonoBehaviour
         IsGamestart = false;
         GetComponent<Animator>().Play("idle3");
         GameAnalytics.NewProgressionEvent(GAProgressionStatus.Start, "Level" + gamemanager.instance.getLevel() + 1);
+        GrandAdManager.TotalGGCoinsEarned = 0;
 
     }
 

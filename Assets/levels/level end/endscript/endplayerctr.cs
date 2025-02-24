@@ -13,6 +13,7 @@ public class endplayerctr : MonoBehaviour
     public Transform boss,campos,look;
     bool die,kick,win;
     public GameObject fightpanel;
+    public GameObject GamePlayPanelWithGG;
     // Start is called before the first frame update
     void Start()
     {
