@@ -77,18 +77,13 @@ public class Level_3_Conroller : MonoBehaviour
 
     public void check_win()
     {
-        if(enemies.Count <= 6)
+        if (enemies.Count <= 6)
         {
-
-
-
             game_run = false;
             print("win");
             //shoot enemies
             StartCoroutine(shoot(enemies));
-
         }
-
     }
 
     public void check_lose()
@@ -103,6 +98,7 @@ public class Level_3_Conroller : MonoBehaviour
             Debug.Log(GrandAdManager.TotalGGCoinsEarned + "Coins after Failure the 3");
 
             GameAnalytics.NewProgressionEvent(GAProgressionStatus.Fail, "Level" + gamemanager.instance.getLevel() + 1, "Points", GrandAdManager.TotalScore);
+
 
             //============================================================================================================================================================ 
 
@@ -189,7 +185,13 @@ public class Level_3_Conroller : MonoBehaviour
             confetti[i].Play();
         }
 
-        yield return new WaitForSeconds(4f);
+        yield return new WaitForSeconds(3f);
+
+
+        // To show Ads 
+        GrandAdManager.instance.ShowAd("startAd");
+
+
         panel_win.SetActive(true);
         panel_arrow.SetActive(false);
 
@@ -209,9 +211,25 @@ public class Level_3_Conroller : MonoBehaviour
 
     IEnumerator wait_lose()
     {
-        
+
+        // For ADS
+        GrandAdManager.counter += 1;
+        if (GrandAdManager.counter == 2)
+        {
+            GrandAdManager.instance.ShowAd("startAd");
+            Debug.Log("Counter Value" + GrandAdManager.counter);
+
+            GrandAdManager.counter = 0;
+
+        }
+
+
         yield return new WaitForSeconds(4f);
         panel_lose.SetActive(true);
         panel_arrow.SetActive(false);
+
+    
+
     }
+
 }

@@ -32,16 +32,16 @@ public class APIManager : MonoBehaviour
     [SerializeField] UserDataObject userData;
 
     private int iv;
-    private int coins;
+    private int coins=1;
     private int scorebase;
-    private int levelbase;
+    private int levelbase=2;
 
     private int user_id;
 
     private string roomCode;
 
     private string base_url = "https://vnwp9menq5.execute-api.us-east-1.amazonaws.com/Prod/games";
-    // private string base_url = "https://vxwuq445k5.execute-api.ap-south-1.amazonaws.com/dev/games";
+     ///private string base_url = "https://vxwuq445k5.execute-api.ap-south-1.amazonaws.com/dev/games";
 
     private void Start()
     {

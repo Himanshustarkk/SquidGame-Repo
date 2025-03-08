@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Runtime.InteropServices;
 using DG.Tweening.Core.Easing;
+using GameAnalyticsSDK;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -24,6 +25,7 @@ public class UiManager : MonoBehaviour
     float ts = 1;
     public TextMeshProUGUI txtpr;
     [SerializeField] GameObject ScoreUI_Count;
+    public GameObject InfoButton;
 
 
 
@@ -79,7 +81,16 @@ public class UiManager : MonoBehaviour
     //    playerSelectionPanel.SetActive(true);
     //    ingamepanel.SetActive(false);
     //}
-
+    public void Info()
+    {
+       
+        startpanel.SetActive(true);
+        Time.timeScale = 0f;
+    }
+    public void ResumeLevel()
+    {
+        Time.timeScale = 1f;
+    }
     public void btn_retry()
     {
         // GrandAdManager.instance.ShowAd("startAd");
@@ -109,7 +120,7 @@ public class UiManager : MonoBehaviour
 
     public void nextlvl()
     {
-        //GrandAdManager.instance.ShowAd("startAd");
+        // GrandAdManager.instance.ShowAd("startAd");
 
         Debug.Log("This is Current Level " + gamemanager.instance.getLevel());
         // SoundManager.instance.Stop("click");
@@ -130,7 +141,8 @@ public class UiManager : MonoBehaviour
 
     public void btnstart()
     {
-        if(gamemanager.instance.getLevel() == 1)
+        Time.timeScale = 1f;
+        if (gamemanager.instance.getLevel() == 1)
         {
             GrandAdManager.TotalGGCoinsEarned = 0;
 
@@ -157,7 +169,7 @@ public class UiManager : MonoBehaviour
         }
         else
         {
-            
+
 
         }
         Debug.Log(" Consistent UI Executed *****  GG coinsearnerd && UI Text ***** " + GrandAdManager.TotalGGCoinsEarned + "   " + _GGCoinTextConsistent.text);
@@ -168,7 +180,8 @@ public class UiManager : MonoBehaviour
     {
 
         //SoundManager.instance.Stop("start");
-       /// SoundManager.instance.Play("click");
+        /// SoundManager.instance.Play("click");
+        Time.timeScale = 1f;
         FindObjectOfType<lvl2playerctr>().GmRun = true;
         startpanel.SetActive(false);
         gameplaypanel.SetActive(true);
@@ -181,7 +194,9 @@ public class UiManager : MonoBehaviour
 
     public void btnstartlvl5()
     {
-
+        InfoButton.SetActive(true);
+        Time.timeScale = 1f;
+        InfoButton.SetActive(true);
         /*  SoundManager.instance.Stop("start");
           SoundManager.instance.Play("click");*/
         startpanel.SetActive(false);
@@ -210,6 +225,15 @@ public class UiManager : MonoBehaviour
     private static extern void GoToURLInSameTab(string url);
     public void ExitGame()
     {
+
+        // Update GameScore API and end Evemt GameAnalytics\
+
+        APIManager.Instance.UpdateGameScore(GrandAdManager.TotalScore, GrandAdManager.isWinOrLoseLevel, gamemanager.instance.getLevel() + 1, GrandAdManager.TotalGGCoinsEarned);
+        GameAnalytics.NewProgressionEvent(GAProgressionStatus.Complete, "GameEnd", "FinalScore", GrandAdManager.TotalScore);
+
+
+        //
+
 
         string url = "https://" + FetchHostname();
         Debug.Log("Exit Button");

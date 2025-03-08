@@ -32,7 +32,12 @@ public class endplayerctr : MonoBehaviour
             
             GetComponent<Animator>().Play("run");
             GetComponent<Animator>().speed=1.2f;
-            
+
+            // For Info Button
+            Time.timeScale = 1f;
+
+
+
             FindObjectOfType<UiManager>().startpanel.SetActive(false);
             TextMeshProUGUI _GGCoinTextConsistent = GameObject.FindGameObjectWithTag("GGConsistenCoin").GetComponent<TextMeshProUGUI>();
             _GGCoinTextConsistent.text = GrandAdManager.TotalGGCoinsEarned.ToString();
@@ -252,8 +257,11 @@ public class endplayerctr : MonoBehaviour
         }
         else
         {
+
             uiManager.winpanel.SetActive(true);
             //=========================================================================================================================================================== for Update GameScore and GG Coins
+
+           
 
             GrandAdManager.isWinOrLoseLevel = "win";
             APIManager.Instance.coinsEarningLevelBased(gamemanager.instance.getLevel() + 1);
@@ -269,6 +277,11 @@ public class endplayerctr : MonoBehaviour
         yield return new WaitForSeconds(2f);
         Debug.Log("After Coroutine Execution");
 
+        //For ADS
+        GrandAdManager.instance.ShowAd("startAd");
+        //
+
+
         //   Gley.MobileAds.Internal.MobileAdsExample.Instance.ShowInterstitial();
 
 
@@ -282,6 +295,16 @@ public class endplayerctr : MonoBehaviour
     {
 
         //=========================================================================================================================================================== for Update GameScore and GG Coins
+        // For ads
+        GrandAdManager.counter += 1;
+        if (GrandAdManager.counter == 2)
+        {
+            GrandAdManager.instance.ShowAd("startAd");
+            Debug.Log("Counter Value" + GrandAdManager.counter);
+
+            GrandAdManager.counter = 0;
+
+        }
 
         GrandAdManager.isWinOrLoseLevel = "loss";
         APIManager.Instance.UpdateGameScore(GrandAdManager.TotalScore, GrandAdManager.isWinOrLoseLevel, gamemanager.instance.getLevel() + 1, GrandAdManager.TotalGGCoinsEarned);

@@ -6,22 +6,22 @@ using UnityEngine.UI;
 
 public class Level_5_timer : MonoBehaviour
 {
-    public GameObject lose_panel, InGame_panel;
+    public GameObject lose_panel, InGame_Tutorial, Info_Panel;
 
     public bool active;
     public Text text_timer;
     public float total_time, max_time, timer;
     Level_5_controller control_script;
-    public GameObject guide , btn_start, MainInfo;
+    public GameObject guide, MainTutorial, MainInfo;
 
     // Start is called before the first frame update
     void Start()
     {
         control_script = FindObjectOfType<Level_5_controller>();
-        if(control_script == null )
+        if (control_script == null)
         {
             Debug.Log("Script is nul");
-        }    
+        }
         else
         {
             text_timer.text = total_time.ToString();
@@ -68,7 +68,7 @@ public class Level_5_timer : MonoBehaviour
         yield return new WaitForSeconds(3.5f);
 
         lose_panel.SetActive(true);
-        InGame_panel.SetActive(false);
+        InGame_Tutorial.SetActive(false);
 
         Level_5_controller controller_script = FindObjectOfType<Level_5_controller>();
         controller_script.show_lose_panel();
@@ -78,20 +78,25 @@ public class Level_5_timer : MonoBehaviour
     {
         if (Level_5_boxControl.boxClicked)
         {
-            TextMeshProUGUI _GGCoinTextConsistent = GameObject.FindGameObjectWithTag("GGConsistenCoin").GetComponent<TextMeshProUGUI>();
-            if (_GGCoinTextConsistent != null)
+            GameObject ggCoinObject = GameObject.FindGameObjectWithTag("GGConsistenCoin");
+            if (ggCoinObject != null)
             {
+                TextMeshProUGUI _GGCoinTextConsistent = ggCoinObject.GetComponent<TextMeshProUGUI>();
                 _GGCoinTextConsistent.text = GrandAdManager.TotalGGCoinsEarned.ToString();
+
             }
             else
             {
 
-
             }
+
+
+
+
             active = true;
 
-            btn_start.SetActive(false);
-            InGame_panel.SetActive(true);
+            InGame_Tutorial.SetActive(true);
+
             if (control_script == null)
             {
                 Debug.Log("Control script is null");
@@ -102,5 +107,6 @@ public class Level_5_timer : MonoBehaviour
 
             }
         }
+        
     }
 }

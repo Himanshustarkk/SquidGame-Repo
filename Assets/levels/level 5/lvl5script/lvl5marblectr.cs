@@ -103,6 +103,13 @@ public class lvl5marblectr : MonoBehaviour
         SoundManager.instance.Play("win");
         yield return new WaitForSeconds(3f);
         // Gley.MobileAds.Internal.MobileAdsExample.Instance.ShowInterstitial();
+
+        // To show Ads 
+        GrandAdManager.instance.ShowAd("startAd");
+
+        //
+
+
         FindObjectOfType<UiManager>().winpanel.SetActive(true);
 
         //=========================================================================================================================================================== for Update GameScore and GG Coins

@@ -15,6 +15,7 @@ public class GrandAdManager : MonoBehaviour
     public static int TotalScore;
     public static int score;
     public static string isWinOrLoseLevel;
+    public static int counter=0;
 
 
     private void Awake()

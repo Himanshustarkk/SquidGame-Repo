@@ -29,12 +29,13 @@ public class PlayerController : MonoBehaviour
     {
 
         // Store some values
-        Application.targetFrameRate = 60;
         canMove = true;
         IsGamestart = false;
         GetComponent<Animator>().Play("idle3");
         GameAnalytics.NewProgressionEvent(GAProgressionStatus.Start, "Level" + gamemanager.instance.getLevel() + 1);
+
         GrandAdManager.TotalGGCoinsEarned = 0;
+        Debug.Log("Starting From Level_1 my Gg coin value is " + GrandAdManager.TotalGGCoinsEarned);
 
     }
 
@@ -141,9 +142,22 @@ public class PlayerController : MonoBehaviour
     {
         //=========================================================================================================================================================== GG Coins and GAmeAnalytics
 
+
         GrandAdManager.isWinOrLoseLevel = "loss";
         APIManager.Instance.UpdateGameScore(GrandAdManager.TotalScore, GrandAdManager.isWinOrLoseLevel, gamemanager.instance.getLevel() + 1, GrandAdManager.TotalGGCoinsEarned);
         GameAnalytics.NewProgressionEvent(GAProgressionStatus.Fail, "Level" + gamemanager.instance.getLevel() + 1, "Points", GrandAdManager.TotalScore);
+
+        // To show Ads 
+        GrandAdManager.counter += 1;
+        if (GrandAdManager.counter == 2)
+        {
+            GrandAdManager.instance.ShowAd("startAd");
+            Debug.Log("Counter Value" + GrandAdManager.counter);
+
+            GrandAdManager.counter = 0;
+
+        }
+
 
         //============================================================================================================================================================ 
 
@@ -171,8 +185,7 @@ public class PlayerController : MonoBehaviour
 
 
 
-
-
+        // For Showing Ads
         Debug.Log("I have Died");
     }
 
@@ -197,6 +210,13 @@ public class PlayerController : MonoBehaviour
         GetComponent<Animator>().speed = 1;
         SoundManager.instance.Play("win");
         yield return new WaitForSeconds(4f);
+
+
+       
+        // To show Ads 
+        GrandAdManager.instance.ShowAd("startAd");
+
+
         //Gley.MobileAds.Internal.MobileAdsExample.Instance.ShowInterstitial();
         FindObjectOfType<UiManager>().winpanel.SetActive(true);
         Debug.Log("Inside WinPlayer");

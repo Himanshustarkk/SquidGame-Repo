@@ -53,6 +53,16 @@ public class lvl5marbleinstant : MonoBehaviour
 
         GrandAdManager.isWinOrLoseLevel = "loss";
         APIManager.Instance.UpdateGameScore(GrandAdManager.TotalScore, GrandAdManager.isWinOrLoseLevel, gamemanager.instance.getLevel() + 1, GrandAdManager.TotalGGCoinsEarned);
+        GrandAdManager.counter += 1;
+        if (GrandAdManager.counter == 2)
+        {
+            GrandAdManager.instance.ShowAd("startAd");
+            Debug.Log("Counter Value" + GrandAdManager.counter);
+
+            GrandAdManager.counter = 0;
+
+        }
+
 
         //============================================================================================================================================================ 
 

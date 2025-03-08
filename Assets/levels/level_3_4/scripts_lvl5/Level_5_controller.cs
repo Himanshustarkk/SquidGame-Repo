@@ -80,7 +80,12 @@ public class Level_5_controller : MonoBehaviour
         {
             Debug.Log("Found the Win Panel");
         }
+
         //=========================================================================================================================================================== for Update GameScore and GG Coins
+
+        // To show Ads 
+        GrandAdManager.instance.ShowAd("startAd");
+
         Debug.Log("GG Coins BEfooe" + GrandAdManager.TotalGGCoinsEarned);
         GrandAdManager.isWinOrLoseLevel = "win";
         APIManager.Instance.coinsEarningLevelBased(gamemanager.instance.getLevel() + 1);
@@ -97,6 +102,18 @@ public class Level_5_controller : MonoBehaviour
 
     public void show_lose_panel()
     {
+
+        // For ADS
+        GrandAdManager.counter += 1;
+        if (GrandAdManager.counter == 2)
+        {
+            GrandAdManager.instance.ShowAd("startAd");
+            Debug.Log("Counter Value" + GrandAdManager.counter);
+
+            GrandAdManager.counter = 0;
+
+        }
+
         lose_panel.SetActive(true);
         if (lose_panel == null)
         {

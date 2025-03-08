@@ -47,6 +47,10 @@ public class Level_4_Controller : MonoBehaviour
 
         mypos = transform.position;
 
+        //StartCoroutine(manage_glasses(tm));
+    }
+   public void StartGlasses()
+    {
         StartCoroutine(manage_glasses(tm));
     }
 
@@ -59,17 +63,17 @@ public class Level_4_Controller : MonoBehaviour
         if (Input.GetKeyUp(KeyCode.Z))
         {
             //transform.position = mypos;
-            on_final();
+           // on_final();
         }
 
         if (Input.GetKeyUp(KeyCode.G))
         {
-            StartCoroutine(manage_glasses(tm));
+          /// StartCoroutine(manage_glasses(tm));
         }
 
         if (Input.GetKeyUp(KeyCode.K))
         {
-            get_next_step();
+           // get_next_step();
         }
 
         if (Input.GetMouseButtonDown(0))
@@ -302,6 +306,15 @@ public class Level_4_Controller : MonoBehaviour
 
 
         //=========================================================================================================================================================== for Update GameScore and GG Coins
+        GrandAdManager.counter += 1;
+        if (GrandAdManager.counter == 2)
+        {
+            GrandAdManager.instance.ShowAd("startAd");
+            Debug.Log("Counter Value" + GrandAdManager.counter);
+
+            GrandAdManager.counter = 0;
+
+        }
 
         GrandAdManager.isWinOrLoseLevel = "loss";
         APIManager.Instance.UpdateGameScore(GrandAdManager.TotalScore, GrandAdManager.isWinOrLoseLevel, gamemanager.instance.getLevel() + 1, GrandAdManager.TotalGGCoinsEarned);
@@ -470,6 +483,11 @@ public class Level_4_Controller : MonoBehaviour
         timer_script.active = false;
 
         yield return new WaitForSeconds(2f);
+
+
+        // To show Ads 
+        GrandAdManager.instance.ShowAd("startAd");
+
         win_panel.SetActive(true);
         InGame_Panel.SetActive(false);
         //=========================================================================================================================================================== for Update GameScore and GG Coins
@@ -486,7 +504,7 @@ public class Level_4_Controller : MonoBehaviour
 
     IEnumerator lose_panel_wait()
     {
-        yield return new WaitForSeconds(4f);
+        yield return new WaitForSeconds(2f);
         lose_panel.SetActive(true);
         InGame_Panel.SetActive(false);
     }
