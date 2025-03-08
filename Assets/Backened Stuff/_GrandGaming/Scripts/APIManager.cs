@@ -32,9 +32,9 @@ public class APIManager : MonoBehaviour
     [SerializeField] UserDataObject userData;
 
     private int iv;
-    private int coins=1;
+    private int coins;
     private int scorebase;
-    private int levelbase=2;
+    private int levelbase;
 
     private int user_id;
 

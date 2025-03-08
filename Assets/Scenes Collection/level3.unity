@@ -2127,7 +2127,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 0.94117653, g: 0.9058824, b: 0.28235295, a: 1}
-  m_RaycastTarget: 0
+  m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -9503,7 +9503,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 0, g: 0, b: 0, a: 1}
-  m_RaycastTarget: 0
+  m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -11172,8 +11172,8 @@ RectTransform:
   - {fileID: 1499202577}
   - {fileID: 1890452110}
   - {fileID: 949929057}
-  - {fileID: 825746824}
   - {fileID: 1244920225}
+  - {fileID: 825746824}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -23336,7 +23336,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 0, g: 0, b: 0, a: 1}
-  m_RaycastTarget: 0
+  m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -28336,7 +28336,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0.000061035156}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1244920226
@@ -52083,8 +52083,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cdf004a82fd8f4a48a8c4c4d1e655221, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  arrow_back_speed: 170
-  arrow_forward_speed: 4000
+  arrow_back_speed: 50
+  arrow_forward_speed: 10000
   max_dist_arrow: 250
   min_dist_arrow: -250
   dist_between_arrows: 70
@@ -52104,7 +52104,7 @@ MonoBehaviour:
   actual_pos: 0
   timer: 0
   max_time: 5
-  speed_target: 200
+  speed_target: 300
   can_move: 0
 --- !u!1 &2112451241
 GameObject:

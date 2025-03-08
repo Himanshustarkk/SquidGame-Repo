@@ -41,11 +41,13 @@ public class Level_3_Arrow : MonoBehaviour
             tmp.x = Mathf.Clamp(tmp.x, min_dist_arrow, max_dist_arrow);
 
             transform.localPosition = tmp;
+            //control_script.can_pull = true;
         }
         else
         {
+            //control_script.can_pull = false;
             // decrease on x arrow
-            decrease_on_x_arrow();
+             decrease_on_x_arrow();
         }
 
 

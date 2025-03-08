@@ -23,6 +23,8 @@ public class Level_3_Start : MonoBehaviour
 
         Debug.Log("m Pressed Anto");
         control_script.game_run = true;
+        control_script.can_pull = true;
+
         InfoButton.SetActive(true);
         panel_arrow.SetActive(true);
         TextMeshProUGUI _GGCoinTextConsistent = GameObject.FindGameObjectWithTag("GGConsistenCoin").GetComponent<TextMeshProUGUI>();
