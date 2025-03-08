@@ -2439,8 +2439,8 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1.56
-  m_Text: A Pattern Will Be Shown At The Beginning On The Glass As Green, Jump On
-    The Correct Green Glass And Win The Game
+  m_Text: At the Beginning the pattern will be shown in green on the Glass And Win
+    The Game
 --- !u!222 &855950551
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2652,7 +2652,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &995179840
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3292,8 +3292,8 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1.11
-  m_Text: A Pattern Will Be Shown At The Beginning On The Glass As Green, Jump On
-    The Correct Green Glass And Win The Game
+  m_Text: At the Beginning the pattern will be shown in green on the Glass And Win
+    The Game
 --- !u!222 &1375983980
 CanvasRenderer:
   m_ObjectHideFlags: 0

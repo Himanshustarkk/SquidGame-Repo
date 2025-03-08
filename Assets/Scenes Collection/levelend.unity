@@ -7511,7 +7511,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 10.5}
+  m_AnchoredPosition: {x: 0, y: -35.96}
   m_SizeDelta: {x: 715.7, y: 688}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1254452273
@@ -7535,7 +7535,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 54c12475d80a52c4a876cd49da532d6c, type: 3}
+    m_Font: {fileID: 12800000, guid: 34202502ade0b824f87ab4b85049f0c4, type: 3}
     m_FontSize: 14
     m_FontStyle: 1
     m_BestFit: 1
@@ -7547,7 +7547,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1.4
-  m_Text: 'sLIDE the player to collect items for energy and fight!
+  m_Text: 'Slide the player to collect energy items for energy and fight!
 
 
 '
