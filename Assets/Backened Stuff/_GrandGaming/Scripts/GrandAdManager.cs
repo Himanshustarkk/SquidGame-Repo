@@ -40,6 +40,7 @@ public class GrandAdManager : MonoBehaviour
     private static extern void broadcastCustom(System.IntPtr message);
     public void ShowAd(string message)
     {
+        Debug.Log("Ads Function Called , Outside Condition");
         if (showAds)
         {
             Debug.Log("Ads Function Called , Inside Condition");

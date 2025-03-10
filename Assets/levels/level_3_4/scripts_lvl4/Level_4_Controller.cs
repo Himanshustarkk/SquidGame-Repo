@@ -35,6 +35,7 @@ public class Level_4_Controller : MonoBehaviour
 
     // get player last pos 
 
+    public GameObject AdsWarning;
     // Start is called before the first frame update
     void Start()
     {
@@ -485,8 +486,7 @@ public class Level_4_Controller : MonoBehaviour
         yield return new WaitForSeconds(2f);
 
 
-        // To show Ads 
-        GrandAdManager.instance.ShowAd("startAd");
+  
 
         win_panel.SetActive(true);
         InGame_Panel.SetActive(false);

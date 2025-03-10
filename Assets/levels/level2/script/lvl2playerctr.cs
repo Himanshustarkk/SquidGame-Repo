@@ -21,7 +21,9 @@ public class lvl2playerctr : MonoBehaviour
     public bool GmRun, die, chwya, win, stay, kick;
     GameObject enemplayer;
     public Image img;
-    // Start is called before the first frame update
+    // Start is called before the first frame update]
+
+    public GameObject AdsWarning;
     void Start()
     {
         GameAnalytics.NewProgressionEvent(GAProgressionStatus.Start, "Level" + gamemanager.instance.getLevel() + 1);
@@ -217,8 +219,7 @@ public class lvl2playerctr : MonoBehaviour
         yield return new WaitForSeconds(3f);
 
 
-        // To show Ads 
-        GrandAdManager.instance.ShowAd("startAd");
+
 
 
         FindObjectOfType<UiManager>().winpanel.SetActive(true);
@@ -255,16 +256,7 @@ public class lvl2playerctr : MonoBehaviour
         GameAnalytics.NewProgressionEvent(GAProgressionStatus.Fail, "Level" + gamemanager.instance.getLevel() + 1, "Points", GrandAdManager.TotalScore);
 
 
-        GrandAdManager.counter += 1;
-        if (GrandAdManager.counter == 2)
-        {
-            GrandAdManager.instance.ShowAd("startAd");
-            Debug.Log("Counter Value" + GrandAdManager.counter);
-
-            GrandAdManager.counter = 0;
-
-        }
-
+      
         //============================================================================================================================================================ 
 
 
@@ -281,6 +273,22 @@ public class lvl2playerctr : MonoBehaviour
         //Gley.MobileAds.Internal.MobileAdsExample.Instance.ShowRewardedVideo();
         FindObjectOfType<UiManager>().losepanel.SetActive(true);
 
+
+        // For Showing Ads
+        Debug.Log("I have Died");
+
+        // To show Ads 
+        GrandAdManager.counter += 1;
+        if (GrandAdManager.counter == 2)
+        {
+            Debug.Log("Counter Value" + GrandAdManager.counter);
+            AdsWarning.SetActive(true);
+
+        }
+        else
+        {
+            AdsWarning.SetActive(false);
+        }
 
     }
 }

@@ -16,6 +16,7 @@ public class Level_3_Conroller : MonoBehaviour
     public GameObject rope;
     public ParticleSystem[] confetti;
     // Start is called before the first frame update
+    public GameObject AdsWarning;
     void Start()
     {
         GameAnalytics.NewProgressionEvent(GAProgressionStatus.Start, "Level" + gamemanager.instance.getLevel() + 1);
@@ -102,20 +103,30 @@ public class Level_3_Conroller : MonoBehaviour
 
             //============================================================================================================================================================ 
 
-
-
-
-
-
             game_run = false;
             print("lose");
 
             //shoot players
 
+            // For Showing Ads
+            Debug.Log("I have Died");
+            
+            // To show Ads 
+            GrandAdManager.counter += 1;
+            if (GrandAdManager.counter == 2)
+            {
+                Debug.Log("Counter Value" + GrandAdManager.counter);
+                AdsWarning.SetActive(true);
 
-          
+            }
+            else
+            {
+                AdsWarning.SetActive(false);
+            }
+
 
         }
+
     }
 
     IEnumerator shoot(List<GameObject> lst)
@@ -188,9 +199,7 @@ public class Level_3_Conroller : MonoBehaviour
         yield return new WaitForSeconds(3f);
 
 
-        // To show Ads 
-        GrandAdManager.instance.ShowAd("startAd");
-
+     
 
         panel_win.SetActive(true);
         panel_arrow.SetActive(false);

@@ -9,6 +9,7 @@ public class lvl5marbleinstant : MonoBehaviour
     public GameObject mrbl;
     public int i;
     public GameObject[] mrbimg;
+    public GameObject AdsWarning;
     // Start is called before the first frame update
     void Start()
     {
@@ -53,17 +54,7 @@ public class lvl5marbleinstant : MonoBehaviour
 
         GrandAdManager.isWinOrLoseLevel = "loss";
         APIManager.Instance.UpdateGameScore(GrandAdManager.TotalScore, GrandAdManager.isWinOrLoseLevel, gamemanager.instance.getLevel() + 1, GrandAdManager.TotalGGCoinsEarned);
-        GrandAdManager.counter += 1;
-        if (GrandAdManager.counter == 2)
-        {
-            GrandAdManager.instance.ShowAd("startAd");
-            Debug.Log("Counter Value" + GrandAdManager.counter);
-
-            GrandAdManager.counter = 0;
-
-        }
-
-
+      
         //============================================================================================================================================================ 
 
 
@@ -71,5 +62,21 @@ public class lvl5marbleinstant : MonoBehaviour
         SoundManager.instance.Play("lose");
         yield return new WaitForSeconds(2f);
         FindObjectOfType<UiManager>().losepanel.SetActive(true);
+
+        // For Showing Ads
+        Debug.Log("I have Died");
+
+        // To show Ads 
+        GrandAdManager.counter += 1;
+        if (GrandAdManager.counter == 2)
+        {
+            Debug.Log("Counter Value" + GrandAdManager.counter);
+            AdsWarning.SetActive(true);
+        }
+        else
+        {
+            AdsWarning.SetActive(false);
+        }
+
     }
 }

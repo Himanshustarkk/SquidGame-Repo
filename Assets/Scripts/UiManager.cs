@@ -93,7 +93,15 @@ public class UiManager : MonoBehaviour
     }
     public void btn_retry()
     {
-        // GrandAdManager.instance.ShowAd("startAd");
+
+        if (GrandAdManager.counter == 2)
+        {
+            GrandAdManager.instance.ShowAd("startAd");
+            GrandAdManager.counter = 0;
+            Debug.Log("Value of GRanAdManager" + GrandAdManager.counter);
+        }
+
+
         print(gamemanager.instance.getlive());
         gamemanager.instance.setlive(gamemanager.instance.getlive() + 1);
         if (gamemanager.instance.getlive() > 2)
@@ -120,7 +128,7 @@ public class UiManager : MonoBehaviour
 
     public void nextlvl()
     {
-        // GrandAdManager.instance.ShowAd("startAd");
+        GrandAdManager.instance.ShowAd("startAd");
 
         Debug.Log("This is Current Level " + gamemanager.instance.getLevel());
         // SoundManager.instance.Stop("click");

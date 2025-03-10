@@ -1144,7 +1144,7 @@ PrefabInstance:
     - target: {fileID: 1107362111564426391, guid: 12f2c636a2158cb44995cd12d40e15e7,
         type: 3}
       propertyPath: showAds
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3253425231366295805, guid: 12f2c636a2158cb44995cd12d40e15e7,
         type: 3}

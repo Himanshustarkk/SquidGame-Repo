@@ -10,6 +10,7 @@ public class Level_5_controller : MonoBehaviour
     public LayerMask box_layer;
     public Level_5_Control_Dalgona control_dalgona_chosen;
     public GameObject win_panel, lose_panel;
+    public GameObject AdsWarning;
 
     // Start is called before the first frame update
     void Start()
@@ -103,17 +104,7 @@ public class Level_5_controller : MonoBehaviour
     public void show_lose_panel()
     {
 
-        // For ADS
-        GrandAdManager.counter += 1;
-        if (GrandAdManager.counter == 2)
-        {
-            GrandAdManager.instance.ShowAd("startAd");
-            Debug.Log("Counter Value" + GrandAdManager.counter);
-
-            GrandAdManager.counter = 0;
-
-        }
-
+       
         lose_panel.SetActive(true);
         if (lose_panel == null)
         {
@@ -123,6 +114,25 @@ public class Level_5_controller : MonoBehaviour
         {
             Debug.Log("Found the loss Panel");
         }
+
+
+
+        // For Showing Ads
+        Debug.Log("I have Died");
+
+        // To show Ads 
+        GrandAdManager.counter += 1;
+        if (GrandAdManager.counter == 2)
+        {
+            Debug.Log("Counter Value" + GrandAdManager.counter);
+            AdsWarning.SetActive(true);
+
+        }
+        else
+        {
+            AdsWarning.SetActive(false);
+        }
+
     }
 
 }

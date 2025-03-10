@@ -21,6 +21,7 @@ public class PlayerController : MonoBehaviour
 
     public static bool IsGamestart;
 
+    public GameObject AdsWarning;
     //[Header(" Rotation Control ")]	
 
 
@@ -147,17 +148,7 @@ public class PlayerController : MonoBehaviour
         APIManager.Instance.UpdateGameScore(GrandAdManager.TotalScore, GrandAdManager.isWinOrLoseLevel, gamemanager.instance.getLevel() + 1, GrandAdManager.TotalGGCoinsEarned);
         GameAnalytics.NewProgressionEvent(GAProgressionStatus.Fail, "Level" + gamemanager.instance.getLevel() + 1, "Points", GrandAdManager.TotalScore);
 
-        // To show Ads 
-        GrandAdManager.counter += 1;
-        if (GrandAdManager.counter == 2)
-        {
-            GrandAdManager.instance.ShowAd("startAd");
-            Debug.Log("Counter Value" + GrandAdManager.counter);
-
-            GrandAdManager.counter = 0;
-
-        }
-
+       
 
         //============================================================================================================================================================ 
 
@@ -183,10 +174,27 @@ public class PlayerController : MonoBehaviour
         //Gley.MobileAds.Internal.MobileAdsExample.Instance.ShowInterstitial();
         FindObjectOfType<UiManager>().losepanel.SetActive(true);
 
+      
+
 
 
         // For Showing Ads
         Debug.Log("I have Died");
+
+        // To show Ads 
+        GrandAdManager.counter += 1;
+        if (GrandAdManager.counter == 2)
+        {
+            Debug.Log("Counter Value" + GrandAdManager.counter);
+            AdsWarning.SetActive(true);
+
+        }
+        else
+        {
+            AdsWarning.SetActive(false);
+        }
+
+       
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -213,8 +221,7 @@ public class PlayerController : MonoBehaviour
 
 
        
-        // To show Ads 
-        GrandAdManager.instance.ShowAd("startAd");
+   
 
 
         //Gley.MobileAds.Internal.MobileAdsExample.Instance.ShowInterstitial();

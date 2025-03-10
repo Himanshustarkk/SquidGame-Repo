@@ -15,6 +15,7 @@ public class endplayerctr : MonoBehaviour
     public GameObject fightpanel;
     public GameObject GamePlayPanelWithGG;
     // Start is called before the first frame update
+    public GameObject AdsWarning;
     void Start()
     {
         GameAnalytics.NewProgressionEvent(GAProgressionStatus.Start, "Level" + gamemanager.instance.getLevel() + 1);
@@ -277,9 +278,6 @@ public class endplayerctr : MonoBehaviour
         yield return new WaitForSeconds(2f);
         Debug.Log("After Coroutine Execution");
 
-        //For ADS
-        GrandAdManager.instance.ShowAd("startAd");
-        //
 
 
         //   Gley.MobileAds.Internal.MobileAdsExample.Instance.ShowInterstitial();
@@ -295,16 +293,7 @@ public class endplayerctr : MonoBehaviour
     {
 
         //=========================================================================================================================================================== for Update GameScore and GG Coins
-        // For ads
-        GrandAdManager.counter += 1;
-        if (GrandAdManager.counter == 2)
-        {
-            GrandAdManager.instance.ShowAd("startAd");
-            Debug.Log("Counter Value" + GrandAdManager.counter);
-
-            GrandAdManager.counter = 0;
-
-        }
+    
 
         GrandAdManager.isWinOrLoseLevel = "loss";
         APIManager.Instance.UpdateGameScore(GrandAdManager.TotalScore, GrandAdManager.isWinOrLoseLevel, gamemanager.instance.getLevel() + 1, GrandAdManager.TotalGGCoinsEarned);
@@ -320,6 +309,20 @@ public class endplayerctr : MonoBehaviour
         yield return new WaitForSeconds(7f);
        // Gley.MobileAds.Internal.MobileAdsExample.Instance.ShowInterstitial();
         FindObjectOfType<UiManager>().losepanel.SetActive(true);
+
+        // To show Ads 
+        GrandAdManager.counter += 1;
+        if (GrandAdManager.counter == 2)
+        {
+            Debug.Log("Counter Value" + GrandAdManager.counter);
+            AdsWarning.SetActive(true);
+
+        }
+        else
+        {
+            AdsWarning.SetActive(false);
+        }
+
 
     }
 }
