@@ -11,6 +11,7 @@ public class Level_5_controller : MonoBehaviour
     public Level_5_Control_Dalgona control_dalgona_chosen;
     public GameObject win_panel, lose_panel;
     public GameObject AdsWarning;
+    int CoinCounter = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -83,21 +84,26 @@ public class Level_5_controller : MonoBehaviour
         }
 
         //=========================================================================================================================================================== for Update GameScore and GG Coins
+        CoinCounter += 1;
+        if(CoinCounter==1)
+        {
+            // To show Ads 
+            GrandAdManager.instance.ShowAd("startAd");
 
-        // To show Ads 
-        GrandAdManager.instance.ShowAd("startAd");
+            Debug.Log("GG Coins BEfooe" + GrandAdManager.TotalGGCoinsEarned);
+            GrandAdManager.isWinOrLoseLevel = "win";
+            APIManager.Instance.coinsEarningLevelBased(gamemanager.instance.getLevel() + 1);
+            GrandAdManager.TotalScore += 100;
 
-        Debug.Log("GG Coins BEfooe" + GrandAdManager.TotalGGCoinsEarned);
-        GrandAdManager.isWinOrLoseLevel = "win";
-        APIManager.Instance.coinsEarningLevelBased(gamemanager.instance.getLevel() + 1);
-        GrandAdManager.TotalScore += 100;
-
-        APIManager.Instance.UpdateGameScore(GrandAdManager.TotalScore, GrandAdManager.isWinOrLoseLevel, gamemanager.instance.getLevel() + 1, GrandAdManager.TotalGGCoinsEarned);
-        GameAnalytics.NewProgressionEvent(GAProgressionStatus.Complete, "Level" + gamemanager.instance.getLevel() + 1, "Points", GrandAdManager.TotalScore);
+            APIManager.Instance.UpdateGameScore(GrandAdManager.TotalScore, GrandAdManager.isWinOrLoseLevel, gamemanager.instance.getLevel() + 1, GrandAdManager.TotalGGCoinsEarned);
+            GameAnalytics.NewProgressionEvent(GAProgressionStatus.Complete, "Level" + gamemanager.instance.getLevel() + 1, "Points", GrandAdManager.TotalScore);
 
 
-        Debug.Log("Total GGCoins Earned" + GrandAdManager.TotalGGCoinsEarned);
-        //=========================================================================================================================================================== 
+
+            Debug.Log("Total GGCoins Earned" + GrandAdManager.TotalGGCoinsEarned);
+            //=========================================================================================================================================================== 
+        }
+
 
     }
 

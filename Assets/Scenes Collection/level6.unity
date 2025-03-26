@@ -3179,7 +3179,8 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 135397085}
   m_Father: {fileID: 118278020}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -3621,6 +3622,85 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 125449628}
   m_Mesh: {fileID: -8005546153325264115, guid: ff8e627ff7e61de4b87378d1e212b60c, type: 3}
+--- !u!1 &135397084
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 135397085}
+  - component: {fileID: 135397087}
+  - component: {fileID: 135397086}
+  m_Layer: 5
+  m_Name: AdsWarning
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &135397085
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 135397084}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 102191145}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 1.0399468, y: 127.25}
+  m_SizeDelta: {x: 643.501, y: 47.884}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &135397086
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 135397084}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FontData:
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_FontSize: 31
+    m_FontStyle: 1
+    m_BestFit: 0
+    m_MinSize: 0
+    m_MaxSize: 88
+    m_Alignment: 4
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: The Game Will Resume After The Ad
+--- !u!222 &135397087
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 135397084}
+  m_CullTransparentMesh: 1
 --- !u!1 &149040455
 GameObject:
   m_ObjectHideFlags: 0
@@ -17892,7 +17972,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &666604558
 RectTransform:
   m_ObjectHideFlags: 0
@@ -17909,7 +17989,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -23.329956, y: 68}
+  m_AnchoredPosition: {x: -3.7199707, y: 54.69995}
   m_SizeDelta: {x: 194.21484, y: 194.21497}
   m_Pivot: {x: 1, y: 0}
 --- !u!114 &666604559
@@ -18950,12 +19030,12 @@ PrefabInstance:
     - target: {fileID: 2963368288720160390, guid: a88710d127e7b8c449e1120cdb2f5bfb,
         type: 3}
       propertyPath: m_Pivot.x
-      value: 0.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2963368288720160390, guid: a88710d127e7b8c449e1120cdb2f5bfb,
         type: 3}
       propertyPath: m_Pivot.y
-      value: 0.5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2963368288720160390, guid: a88710d127e7b8c449e1120cdb2f5bfb,
         type: 3}
@@ -19030,12 +19110,12 @@ PrefabInstance:
     - target: {fileID: 2963368288720160390, guid: a88710d127e7b8c449e1120cdb2f5bfb,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 86.6001
+      value: 34.7
       objectReference: {fileID: 0}
     - target: {fileID: 2963368288720160390, guid: a88710d127e7b8c449e1120cdb2f5bfb,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -137.37
+      value: -126.25
       objectReference: {fileID: 0}
     - target: {fileID: 2963368288720160390, guid: a88710d127e7b8c449e1120cdb2f5bfb,
         type: 3}
@@ -20178,7 +20258,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &736127793
 RectTransform:
   m_ObjectHideFlags: 0
@@ -20231,7 +20311,9 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: An ad will be shown when you retry
+  m_Text: 'The Game Will Resume After The Ad
+
+'
 --- !u!222 &736127795
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -27114,11 +27196,11 @@ RectTransform:
   - {fileID: 1677612328}
   m_Father: {fileID: 1136843054}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 1}
-  m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 1, y: 1}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: -13.57, y: -108.97998}
   m_SizeDelta: {x: 463.57495, y: 325.1051}
-  m_Pivot: {x: 0.5, y: 1}
+  m_Pivot: {x: 1, y: 1}
 --- !u!114 &1018129774
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -27880,9 +27962,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'After Some Time, Release The Needle To Avoid Shaking.
-
-'
+  m_Text: If the Needle Shakes Release it
 --- !u!222 &1065096318
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -29849,7 +29929,7 @@ MonoBehaviour:
   Info_Panel: {fileID: 1423134162}
   active: 0
   text_timer: {fileID: 1677612329}
-  total_time: 30
+  total_time: 40
   max_time: 1
   timer: 0
   guide: {fileID: 1739068540}
@@ -30182,7 +30262,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: TOUCH & HOLD
+  m_Text: HOLD
 --- !u!222 &1141124200
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -38994,8 +39074,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -25.569824, y: 65.1001}
-  m_SizeDelta: {x: 179.8, y: 183.3}
+  m_AnchoredPosition: {x: -211.7, y: 81.9}
+  m_SizeDelta: {x: 145.5, y: 149.4}
   m_Pivot: {x: 1, y: 0}
 --- !u!114 &1423134164
 MonoBehaviour:
@@ -39569,7 +39649,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 27, y: -463}
+  m_AnchoredPosition: {x: 27, y: -276}
   m_SizeDelta: {x: 592.8, y: 399.5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!95 &1448705037
@@ -57466,7 +57546,7 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: 34202502ade0b824f87ab4b85049f0c4, type: 3}
-    m_FontSize: 46
+    m_FontSize: 37
     m_FontStyle: 1
     m_BestFit: 0
     m_MinSize: 10
@@ -57477,9 +57557,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'After Some Time, Release The Needle To Avoid Shaking.
-
-'
+  m_Text: 'If the Needle Shakes Release it '
 --- !u!222 &2063819421
 CanvasRenderer:
   m_ObjectHideFlags: 0

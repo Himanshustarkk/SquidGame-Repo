@@ -33,10 +33,12 @@ public class Level_3_Arrow : MonoBehaviour
 
         if (Input.GetMouseButtonDown(0))
         {
-            float inc = arrow_forward_speed * Time.deltaTime;
-
+            Debug.Log(" Inpot Given");
+            float inc = arrow_forward_speed * 0.004f;
+            Debug.Log("Time.Deltatime"+Time.deltaTime);
             Vector3 tmp = transform.localPosition;
             tmp.x += inc;
+            Debug.Log("My inc value on press"+inc );
 
             tmp.x = Mathf.Clamp(tmp.x, min_dist_arrow, max_dist_arrow);
 

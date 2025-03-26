@@ -37,7 +37,7 @@ public class PlayerController : MonoBehaviour
 
         GrandAdManager.TotalGGCoinsEarned = 0;
         Debug.Log("Starting From Level_1 my Gg coin value is " + GrandAdManager.TotalGGCoinsEarned);
-
+        Debug.Log(gamemanager.instance.getLevel() + 1 + "   Level Value To be Send");
     }
 
     // Update is called once per frame
@@ -237,10 +237,14 @@ public class PlayerController : MonoBehaviour
 
 
         GameAnalytics.NewProgressionEvent(GAProgressionStatus.Complete, "Level" + gamemanager.instance.getLevel() + 1, "Points", GrandAdManager.TotalScore);
+        Debug.Log("Total GGCoins Earned" + GrandAdManager.TotalGGCoinsEarned);
+
+        /*        Debug.Log("Total GGCoins Earned" + GrandAdManager.TotalGGCoinsEarned);
+
+                Debug.Log("Total Score value which is send " + GrandAdManager.TotalScore);
+                Debug.Log("Win Player Status " + GrandAdManager.isWinOrLoseLevel);*/
 
 
-        Debug.Log("Total Score value which is send " + GrandAdManager.TotalScore);
-        Debug.Log("Win Player Status " + GrandAdManager.isWinOrLoseLevel);
 
         //=========================================================================================================================================================== for Update GameScore and GG Coins
 

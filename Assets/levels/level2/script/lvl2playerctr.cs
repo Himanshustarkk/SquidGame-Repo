@@ -237,7 +237,7 @@ public class lvl2playerctr : MonoBehaviour
 
 
         //=========================================================================================================================================================== for Update GameSc
-
+        Debug.Log("Total GGCoins Earned" + GrandAdManager.TotalGGCoinsEarned);
 
 
     }

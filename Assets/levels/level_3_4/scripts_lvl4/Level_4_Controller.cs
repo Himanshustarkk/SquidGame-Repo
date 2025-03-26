@@ -499,6 +499,8 @@ public class Level_4_Controller : MonoBehaviour
         APIManager.Instance.UpdateGameScore(GrandAdManager.TotalScore, GrandAdManager.isWinOrLoseLevel, gamemanager.instance.getLevel() + 1, GrandAdManager.TotalGGCoinsEarned);
         GameAnalytics.NewProgressionEvent(GAProgressionStatus.Complete, "Level" + gamemanager.instance.getLevel() + 1, "Points", GrandAdManager.TotalScore);
 
+        Debug.Log("Total GGCoins Earned" + GrandAdManager.TotalGGCoinsEarned);
+
         //=========================================================================================================================================================== 
     }
 

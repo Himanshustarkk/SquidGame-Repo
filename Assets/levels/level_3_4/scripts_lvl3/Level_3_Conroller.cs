@@ -99,6 +99,7 @@ public class Level_3_Conroller : MonoBehaviour
             Debug.Log(GrandAdManager.TotalGGCoinsEarned + "Coins after Failure the 3");
 
             GameAnalytics.NewProgressionEvent(GAProgressionStatus.Fail, "Level" + gamemanager.instance.getLevel() + 1, "Points", GrandAdManager.TotalScore);
+            Debug.Log(gamemanager.instance.getLevel() + 1 + "   Level Value To be Send");
 
 
             //============================================================================================================================================================ 
@@ -123,6 +124,7 @@ public class Level_3_Conroller : MonoBehaviour
             {
                 AdsWarning.SetActive(false);
             }
+            StartCoroutine(shoot(players));
 
 
         }
@@ -215,6 +217,7 @@ public class Level_3_Conroller : MonoBehaviour
         GameAnalytics.NewProgressionEvent(GAProgressionStatus.Complete, "Level" + gamemanager.instance.getLevel() + 1, "Points", GrandAdManager.TotalScore);
 
         //=========================================================================================================================================================== 
+        Debug.Log("Total GGCoins Earned" + GrandAdManager.TotalGGCoinsEarned);
 
     }
 

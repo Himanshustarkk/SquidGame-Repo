@@ -211,7 +211,7 @@ public class APIManager : MonoBehaviour
                     if ((userlevel % levelbase) == 0)
                     {
 
-                        Debug.Log(" BEfore ****** GG Coin Logic EXecuting + userlevel + levelbase******" + GrandAdManager.TotalGGCoinsEarned + "    " + userlevel + "  " + levelbase);
+                       // Debug.Log(" BEfore ****** GG Coin Logic EXecuting + userlevel + levelbase******" + GrandAdManager.TotalGGCoinsEarned + "    " + userlevel + "  " + levelbase);
                         GrandAdManager.TotalGGCoinsEarned += 1;
                         Debug.Log("AFter ****** GG Coin Logic EXecuting + userlevel + levelbase ****" + GrandAdManager.TotalGGCoinsEarned+"   "+userlevel+"  "+levelbase);
                         TextMeshProUGUI _GGCoinText = GameObject.FindGameObjectWithTag("GGCoinText").GetComponent<TextMeshProUGUI>();
